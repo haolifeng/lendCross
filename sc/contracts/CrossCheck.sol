@@ -4,7 +4,7 @@ import "./Interface.sol";
 import "./CrossLib.sol";
 
 contract CrossCheck {
-
+    address public owner;
     address TokenManagerAddr;
     uint256 wanChainID = 2153201998;
 
@@ -13,15 +13,21 @@ contract CrossCheck {
         address ctokenAddr;
     }
     mapping(address=>address) UnderlyingTokenToCTokenMap;
+    constructor() {
+        owner = msg.sender;
+    }
+    modifier onlyOwner() {
+        require(owner == msg.sender, "Ownable: caller is not the owner");
+        _;
+    }
 
-
-    function setTokenPairs(TokenAddrPair[] memory tokenPairs) external{
+    function setTokenPairs(TokenAddrPair[] memory tokenPairs) onlyOwner external{
         for(uint256 i = 0; i < tokenPairs.length; i++) {
             UnderlyingTokenToCTokenMap[tokenPairs[i].underlyingToken] =  tokenPairs[i].ctokenAddr;
         }
 
     }
-    function updateTokenPair(TokenAddrPair  memory tokenPair)external {
+    function updateTokenPair(TokenAddrPair  memory tokenPair) onlyOwner external {
         UnderlyingTokenToCTokenMap[tokenPair.underlyingToken] =  tokenPair.ctokenAddr;
     }
 
@@ -43,7 +49,7 @@ contract CrossCheck {
         ctokenAddr = UnderlyingTokenToCTokenMap[underlyingTokenAddr];
 
     }
-    function setTokenManager(address tokenManagerAddr) external  {
+    function setTokenManager(address tokenManagerAddr) onlyOwner external  {
         TokenManagerAddr = tokenManagerAddr;
     }
 }

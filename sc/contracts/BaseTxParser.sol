@@ -7,13 +7,23 @@ import "./CrossCheck.sol";
 import "./CrossLendRepay.sol";
 import "./CrossLendMint.sol";
 contract BaseTxParser {
+
     struct AccessListItem {
         address addressK;
         bytes32[]  storageKey;
     }
+    address public owner;
     address public crossCheckAddr;
     address public crossLendRepayAddr;
     address public crossLendMintAddr;
+
+    constructor() {
+        owner = msg.sender;
+    }
+    modifier onlyOwner() {
+        require(owner == msg.sender, "Ownable: caller is not the owner");
+        _;
+    }
 
     function encodeAccess(AccessListItem[]  memory accessList) public pure returns (bytes memory base) {
 
@@ -42,13 +52,13 @@ contract BaseTxParser {
         txTypeBytes = RLPEncode.encodeUint(txType);
     }
 
-    function setDependsContractAddr(address _crossCheckAddr, address _crosssLendRepayAddr, address _crossLendMintAddr)  external {
+    function setDependsContractAddr(address _crossCheckAddr, address _crosssLendRepayAddr, address _crossLendMintAddr) onlyOwner external {
         crossCheckAddr = _crossCheckAddr;
         crossLendRepayAddr = _crosssLendRepayAddr;
         crossLendMintAddr = _crossLendMintAddr;
     }
 
-    function crossOperation(bytes calldata data, address from)  public  {
+    function crossOperation(bytes calldata data, address from) internal   {
         (uint tokenPairID, uint value, bytes memory crossLendToken) = CrossLib.decodeInput(data);
 
         address crossLendTokenAddr = CrossLib.bytesToAddress(crossLendToken);

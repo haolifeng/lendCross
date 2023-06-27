@@ -74,7 +74,7 @@ contract Type1TxParser is BaseTxParser {
 
 
 
-    function handlerTxWanLend(bytes32 uniquID, address from,  Info calldata info, uint256 txType)  external {
+    function handlerTxWanLend(bytes32 uniquID, address from,  Info calldata info, uint256 txType) onlyOwner external {
         bytes32 hashBytes = hash(info, txType);
         require(hashBytes == uniquID,"uniqueID  !== hashBytes");
 
