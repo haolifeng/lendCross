@@ -1,0 +1,143 @@
+{
+  "contractName": "CrossLendBase",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/CrossLendBase.sol\":\"CrossLendBase\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/CrossLendBase.sol\":{\"keccak256\":\"0xc19b8ec69cfc1604bd24a562181ed9faf07aecd9a5eda7c99f70fdda7122f3c2\",\"urls\":[\"bzz-raw://09beae9856e41b68c87adc97a21e5ddaa3b456dd8aac992ec2b709977331e5e7\",\"dweb:/ipfs/QmYcTT75KgxFUm75pkbvebS9A19pY54jnqLGXyKLTQS8AP\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220516972dd5643a33d66ae356208ca7f8c750fd23b2da2ebcaa387469006de28a764736f6c63430007060033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220516972dd5643a33d66ae356208ca7f8c750fd23b2da2ebcaa387469006de28a764736f6c63430007060033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "62:29:2:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "62:29:2:-:0;;;;;",
+  "source": "pragma solidity ^0.7.0;\r\npragma experimental ABIEncoderV2;\r\n\r\ncontract CrossLendBase {\r\n\r\n}",
+  "sourcePath": "F:\\dev-github.com\\lendCross\\sc\\contracts\\CrossLendBase.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/CrossLendBase.sol",
+    "exportedSymbols": {
+      "CrossLendBase": [
+        317
+      ]
+    },
+    "id": 318,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 315,
+        "literals": [
+          "solidity",
+          "^",
+          "0.7",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:2"
+      },
+      {
+        "id": 316,
+        "literals": [
+          "experimental",
+          "ABIEncoderV2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "25:33:2"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 317,
+        "linearizedBaseContracts": [
+          317
+        ],
+        "name": "CrossLendBase",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 318,
+        "src": "62:29:2"
+      }
+    ],
+    "src": "0:91:2"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "project:/contracts/CrossLendBase.sol",
+      "exportedSymbols": {
+        "CrossLendBase": [
+          317
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.7",
+            ".0"
+          ]
+        },
+        "id": 315,
+        "name": "PragmaDirective",
+        "src": "0:23:2"
+      },
+      {
+        "attributes": {
+          "literals": [
+            "experimental",
+            "ABIEncoderV2"
+          ]
+        },
+        "id": 316,
+        "name": "PragmaDirective",
+        "src": "25:33:2"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            317
+          ],
+          "name": "CrossLendBase",
+          "nodes": [
+            null
+          ],
+          "scope": 318
+        },
+        "id": 317,
+        "name": "ContractDefinition",
+        "src": "62:29:2"
+      }
+    ],
+    "id": 318,
+    "name": "SourceUnit",
+    "src": "0:91:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.6+commit.7338295f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.14",
+  "updatedAt": "2023-06-27T07:17:15.166Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
