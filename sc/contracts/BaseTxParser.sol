@@ -2,12 +2,18 @@ pragma solidity ^0.7.0;
 pragma experimental ABIEncoderV2;
 import "./external_lib/RLPEncode.sol";
 import "./external_lib/ECVerify.sol";
-
+import "./CrossLib.sol";
+import "./CrossCheck.sol";
+import "./CrossLendRepay.sol";
+import "./CrossLendMint.sol";
 contract BaseTxParser {
     struct AccessListItem {
         address addressK;
         bytes32[]  storageKey;
     }
+    address public crossCheckAddr;
+    address public crossLendRepayAddr;
+    address public crossLendMintAddr;
 
     function encodeAccess(AccessListItem[]  memory accessList) public pure returns (bytes memory base) {
 
@@ -34,6 +40,36 @@ contract BaseTxParser {
     }
     function getTxTypeBytes(uint256 txType) public pure returns (bytes memory txTypeBytes){
         txTypeBytes = RLPEncode.encodeUint(txType);
+    }
+
+    function setDependsContractAddr(address _crossCheckAddr, address _crosssLendRepayAddr, address _crossLendMintAddr)  external {
+        crossCheckAddr = _crossCheckAddr;
+        crossLendRepayAddr = _crosssLendRepayAddr;
+        crossLendMintAddr = _crossLendMintAddr;
+    }
+
+    function crossOperation(bytes calldata data, address from)  public  {
+        (uint tokenPairID, uint value, bytes memory crossLendToken) = CrossLib.decodeInput(data);
+
+        address crossLendTokenAddr = CrossLib.bytesToAddress(crossLendToken);
+
+        require(crossLendTokenAddr == crossLendMintAddr || crossLendTokenAddr == crossLendRepayAddr, "crossLendTokenAddr is wrong");
+
+        (address underlyingTokenAddr, address ctokenAddr) =  CrossCheck(crossCheckAddr).getCTokenAddr(tokenPairID);
+
+        if(crossLendTokenAddr == crossLendMintAddr){
+            if(underlyingTokenAddr == 0x0000000000000000000000000000000000000000){
+                CrossLendMint(crossLendMintAddr).lendWanMint(ctokenAddr,from, value);
+            }else{
+                CrossLendMint(crossLendMintAddr).lendTokenMint(ctokenAddr,from, value);
+            }
+        }else{
+            if(underlyingTokenAddr == address(0x0000000000000000000000000000000000000000)){
+                CrossLendRepay(crossLendRepayAddr).lendWanRepay(ctokenAddr,from, value);
+            }else{
+                CrossLendRepay(crossLendRepayAddr).lendTokenRepay(ctokenAddr,from, value);
+            }
+        }
     }
 
 }

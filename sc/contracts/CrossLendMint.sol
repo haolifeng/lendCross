@@ -2,7 +2,6 @@ pragma solidity ^0.7.0;
 pragma experimental ABIEncoderV2;
 
 import "./CrossLendBase.sol";
-import "./Interface.sol";
 
 contract CrossLendMint is CrossLendBase {
     function lendTokenMint(address cToken,address from,uint256  amount)  external {

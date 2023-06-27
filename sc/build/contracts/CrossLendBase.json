@@ -1,28 +1,40 @@
 {
   "contractName": "CrossLendBase",
   "abi": [],
-  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/CrossLendBase.sol\":\"CrossLendBase\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/CrossLendBase.sol\":{\"keccak256\":\"0xc19b8ec69cfc1604bd24a562181ed9faf07aecd9a5eda7c99f70fdda7122f3c2\",\"urls\":[\"bzz-raw://09beae9856e41b68c87adc97a21e5ddaa3b456dd8aac992ec2b709977331e5e7\",\"dweb:/ipfs/QmYcTT75KgxFUm75pkbvebS9A19pY54jnqLGXyKLTQS8AP\"]}},\"version\":1}",
-  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220516972dd5643a33d66ae356208ca7f8c750fd23b2da2ebcaa387469006de28a764736f6c63430007060033",
-  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220516972dd5643a33d66ae356208ca7f8c750fd23b2da2ebcaa387469006de28a764736f6c63430007060033",
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/CrossLendBase.sol\":\"CrossLendBase\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/CrossLendBase.sol\":{\"keccak256\":\"0xbc125d0cc36a83b4b75414d718fb38bd4bd8bb88ee74c2627be7a76e31ba7abd\",\"urls\":[\"bzz-raw://d9f92a91fb7294578680d995f653797f782a13d85fdf573ab9e29349410e1836\",\"dweb:/ipfs/QmXAsFd3tRwMmPQEFuAgkYFfcgcuwmxJFFBdovK7ESahye\"]},\"project:/contracts/Interface.sol\":{\"keccak256\":\"0x2f81114f56bd3d6eeaff9db513d334160eb9445a06a5b4e4e4130fddc47e5cb1\",\"urls\":[\"bzz-raw://2cc9c3653ccd604af2da33710352289cb466d5f658f73fc33b1a46cf7ef9bddd\",\"dweb:/ipfs/QmRbnYgpXoPkjnCF1c61BCHUikhzJovG2PZqRzNSdCYAJ2\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212200594e65f935068b065da7233a6c910efdb3aac031dcb873c214f7d54edf8d68864736f6c63430007060033",
+  "deployedBytecode": "0x6080604052600080fdfea26469706673582212200594e65f935068b065da7233a6c910efdb3aac031dcb873c214f7d54edf8d68864736f6c63430007060033",
   "immutableReferences": {},
   "generatedSources": [],
   "deployedGeneratedSources": [],
-  "sourceMap": "62:29:2:-:0;;;;;;;;;;;;;;;;;;;",
-  "deployedSourceMap": "62:29:2:-:0;;;;;",
-  "source": "pragma solidity ^0.7.0;\r\npragma experimental ABIEncoderV2;\r\n\r\ncontract CrossLendBase {\r\n\r\n}",
+  "sourceMap": "89:29:2:-:0;;;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "89:29:2:-:0;;;;;",
+  "source": "pragma solidity ^0.7.0;\r\npragma experimental ABIEncoderV2;\r\n\r\nimport \"./Interface.sol\";\r\ncontract CrossLendBase {\r\n\r\n}",
   "sourcePath": "F:\\dev-github.com\\lendCross\\sc\\contracts\\CrossLendBase.sol",
   "ast": {
     "absolutePath": "project:/contracts/CrossLendBase.sol",
     "exportedSymbols": {
+      "CErc20": [
+        802
+      ],
+      "CWan": [
+        878
+      ],
       "CrossLendBase": [
-        317
+        455
+      ],
+      "IERC20": [
+        710
+      ],
+      "ITokenManager": [
+        892
       ]
     },
-    "id": 318,
+    "id": 456,
     "nodeType": "SourceUnit",
     "nodes": [
       {
-        "id": 315,
+        "id": 452,
         "literals": [
           "solidity",
           "^",
@@ -33,7 +45,7 @@
         "src": "0:23:2"
       },
       {
-        "id": 316,
+        "id": 453,
         "literals": [
           "experimental",
           "ABIEncoderV2"
@@ -42,30 +54,53 @@
         "src": "25:33:2"
       },
       {
+        "absolutePath": "project:/contracts/Interface.sol",
+        "file": "./Interface.sol",
+        "id": 454,
+        "nodeType": "ImportDirective",
+        "scope": 456,
+        "sourceUnit": 893,
+        "src": "62:25:2",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
         "abstract": false,
         "baseContracts": [],
         "contractDependencies": [],
         "contractKind": "contract",
         "fullyImplemented": true,
-        "id": 317,
+        "id": 455,
         "linearizedBaseContracts": [
-          317
+          455
         ],
         "name": "CrossLendBase",
         "nodeType": "ContractDefinition",
         "nodes": [],
-        "scope": 318,
-        "src": "62:29:2"
+        "scope": 456,
+        "src": "89:29:2"
       }
     ],
-    "src": "0:91:2"
+    "src": "0:118:2"
   },
   "legacyAST": {
     "attributes": {
       "absolutePath": "project:/contracts/CrossLendBase.sol",
       "exportedSymbols": {
+        "CErc20": [
+          802
+        ],
+        "CWan": [
+          878
+        ],
         "CrossLendBase": [
-          317
+          455
+        ],
+        "IERC20": [
+          710
+        ],
+        "ITokenManager": [
+          892
         ]
       }
     },
@@ -79,7 +114,7 @@
             ".0"
           ]
         },
-        "id": 315,
+        "id": 452,
         "name": "PragmaDirective",
         "src": "0:23:2"
       },
@@ -90,9 +125,24 @@
             "ABIEncoderV2"
           ]
         },
-        "id": 316,
+        "id": 453,
         "name": "PragmaDirective",
         "src": "25:33:2"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 893,
+          "absolutePath": "project:/contracts/Interface.sol",
+          "file": "./Interface.sol",
+          "scope": 456,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 454,
+        "name": "ImportDirective",
+        "src": "62:25:2"
       },
       {
         "attributes": {
@@ -106,22 +156,22 @@
           "contractKind": "contract",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
-            317
+            455
           ],
           "name": "CrossLendBase",
           "nodes": [
             null
           ],
-          "scope": 318
+          "scope": 456
         },
-        "id": 317,
+        "id": 455,
         "name": "ContractDefinition",
-        "src": "62:29:2"
+        "src": "89:29:2"
       }
     ],
-    "id": 318,
+    "id": 456,
     "name": "SourceUnit",
-    "src": "0:91:2"
+    "src": "0:118:2"
   },
   "compiler": {
     "name": "solc",
@@ -129,7 +179,7 @@
   },
   "networks": {},
   "schemaVersion": "3.4.14",
-  "updatedAt": "2023-06-27T07:17:15.166Z",
+  "updatedAt": "2023-06-27T08:12:21.894Z",
   "devdoc": {
     "kind": "dev",
     "methods": {},
