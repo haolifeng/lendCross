@@ -13,6 +13,13 @@ class CrossLendBaseObj {
         let ret = await tx.wait();
         return ret;
     }
+    async setTxMulParse(wallet, txParseScAddrs){
+        let singer = wallet.connect(this.provider);
+        let signedWallet = this.scInst.connect(singer);
+        let tx = signedWallet.setTxMulParse(txParseScAddrs);
+        let ret = await tx.wait();
+        return ret;
+    }
 
 }
 module.exports = CrossLendBaseObj;
