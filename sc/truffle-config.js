@@ -25,7 +25,7 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 const config = require('./config');
 const nodeUrl = config.wanChain.nodeUrl;
 console.log('nodeUrl: ', nodeUrl);
-const mnemonic = 'deer funny trip dress siren crane build stomach thunder setup yellow audit';
+const mnemonic = config.words;
 
 module.exports = {
   /**

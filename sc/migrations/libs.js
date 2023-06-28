@@ -1,7 +1,7 @@
 const fs = require('fs');
 function updateScAddr(scName, scAddr) {
     
-    let configPath = __dirname + "/scAddr.json"
+    let configPath = __dirname + "../../gconfig/scAddr.json"
     let data = fs.readFileSync(configPath);
     let config = data.toString();
     
