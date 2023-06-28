@@ -1,6 +1,9 @@
 
 const CrossLendRepay = artifacts.require('CrossLendRepay');
 
+const {
+   updateScAddr
+} = require('./libs')
 module.exports = async function (deployer) {
 
    await  deployer.deploy(CrossLendRepay);
@@ -8,7 +11,7 @@ module.exports = async function (deployer) {
    const CrossLendRepayInst = await CrossLendRepay.deployed();
    const scAddr_crossLendRepay =  CrossLendRepayInst.address;
 
-
+   updateScAddr('CrossLendRepay', scAddr_crossLendRepay);
    
 
 };
