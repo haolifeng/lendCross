@@ -8,14 +8,14 @@ class CrossCheckObj {
     async setTokenPairs(wallet, TokenAddrPair){
         let singer = wallet.connect(this.provider);
         let signedWallet = this.scInst.connect(singer);
-        let tx = signedWallet.setTokenPairs(TokenAddrPair);
+        let tx = await signedWallet.setTokenPairs(TokenAddrPair);
         let ret = await tx.wait();
         return ret;
     }
     async setTokenManager(wallet, tokenManagerScAddr) {
         let singer = wallet.connect(this.provider);
         let signedWallet = this.scInst.connect(singer);
-        let tx = signedWallet.setTokenManager(tokenManagerScAddr);
+        let tx = await signedWallet.setTokenManager(tokenManagerScAddr);
         let ret = await tx.wait();
         return ret;
     }

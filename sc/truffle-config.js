@@ -23,9 +23,11 @@ const HDWalletProvider = require('@truffle/hdwallet-provider');
 //
 // const fs = require('fs');
 const config = require('./config');
-const nodeUrl = config.wanChain.nodeUrl;
+const nodeUrl = config.appConfig.wanChain.nodeUrl;
 console.log('nodeUrl: ', nodeUrl);
-const mnemonic = config.words;
+const mnemonic = config.appConfig.words;
+const chainID = config.appConfig.wanChain.chainID
+
 
 module.exports = {
   /**
@@ -65,7 +67,7 @@ module.exports = {
     // Note: It's important to wrap the provider as a function to ensure truffle uses a new provider every time.
       wantest: {
           provider: () => new HDWalletProvider(mnemonic, nodeUrl),
-          network_id: config.wanChain.chainID,       // Ropsten's id
+          network_id: chainID,       // Ropsten's id
           gas: 5500000,        // Ropsten has a lower block limit than mainnet
           confirmations: 2,    // # of confirmations to wait between deployments. (default: 0)
           timeoutBlocks: 200,  // # of blocks before a deployment times out  (minimum/default: 50)

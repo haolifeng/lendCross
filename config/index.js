@@ -1,8 +1,8 @@
 const appConfig_main = require('./config_main');
-const appConfig_test = require('../config_test');
+const appConfig_test = require('./config_test');
 
-const scAddrs_main = require('./gconfig/scAddrs_main')
-const scAddrs_test = require('./gconfig/scAddrs_test');
+const scAddrs_main = require('../gconfig/scAddrs_main.json')
+const scAddrs_test = require('../gconfig/scAddrs_test.json');
 
 const lendConfig_main = require('./lendConf/config_mainnet');
 const lendConfig_test = require('./lendConf/config_testnet');
@@ -16,8 +16,7 @@ const scAddrs = isMain ? scAddrs_main : scAddrs_test;
 const lendConfig = isMain ? lendConfig_main: lendConfig_test
 
 let config = {
-    wanChain:appConfig.wanChain,
-    words: appConfig.words,
+    appConfig:appConfig,
     isMain: isMain,
     scAddrs:scAddrs,
     lendConfig:lendConfig,
