@@ -1,6 +1,8 @@
 const { ethers } = require('ethers');
 
-const appConfig = require('./gconfig/appConfig.json');
+const config = require('./config');
 
-let admin = ethers.Wallet.fromMnemonic(appConfig.words);
+
+
+let admin = ethers.Wallet.fromMnemonic(config.words);
 module.exports = admin;
