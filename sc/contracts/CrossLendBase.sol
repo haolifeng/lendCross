@@ -21,7 +21,7 @@ contract CrossLendBase {
     function setTxParse(address txAddr) external onlyOwner {
         txParserMap[txAddr] = true;
     }
-    function setTxMulParse(address [] txAddrs) external onlyOwner {
+    function setTxMulParse(address[] calldata txAddrs) external onlyOwner {
         for(uint256 i = 0; i < txAddrs.length; i++){
             txParserMap[txAddrs[i]] = true;
         }
