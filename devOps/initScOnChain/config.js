@@ -1,11 +1,9 @@
 const admin = require('../../wallet');
-const appConfig = require('../../gconfig/appConfig');
-const scAddr = require('../../gconfig/scAddr');
-let config = {
+const config = require('../../config');
+
+module.exports = {
     admin:admin,
-    wanChain:appConfig.wantest,
-    scAddr: scAddr,
-
-
+    wanChain:config.wanChain,
+    scAddr: config.scAddrs,
+    isMain: config.isMain
 }
-module.exports = config;
