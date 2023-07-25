@@ -6,5 +6,6 @@ let config = {
     wanChain:appConfig.wantest,
     scAddr: scAddr,
 
+
 }
 module.exports = config;
