@@ -1,8 +1,15 @@
-const appConfig = require('../gconfig/appConfig');
+const appConfig_main = require('../gconfig/appConfig_main');
+const appConfig_test = require('../gconfig/appConfig_test');
+
+let isMain = false;
+
+const appConfig = isMain ? appConfig_main : appConfig_test
+
 
 let config = {
-    wanChain:appConfig.wantest,
-    words: appConfig.words
+    wanChain:appConfig.wanChain,
+    words: appConfig.words,
+    isMain: isMain
 
 }
 
