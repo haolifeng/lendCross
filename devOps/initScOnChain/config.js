@@ -5,5 +5,6 @@ module.exports = {
     admin:admin,
     wanChain:config.wanChain,
     scAddr: config.scAddrs,
-    isMain: config.isMain
+    isMain: config.isMain,
+    lendConfig: config.lendConfig,
 }

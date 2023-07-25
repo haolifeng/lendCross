@@ -1,0 +1,141 @@
+{
+    "OracleStorage": "0x27933a9b0a5c21b838843d7601b6e0b488122ae9",
+    "params": {
+        "wWAN": {
+            "exchangeRate": 2e+26,
+            "collateralFactor": 750000000000000000,
+            "reserveFactor": 0,
+            "name": "wWAN",
+            "symbol": "wWAN",
+            "decimals": 8,
+            "underlying": "0x0000000000000000000000000000000000000000"
+        },
+        "wwanBTC": {
+            "exchangeRate": 20000000000000000,
+            "collateralFactor": 750000000000000000,
+            "reserveFactor": 0,
+            "name": "wwanBTC",
+            "symbol": "wwanBTC",
+            "decimals": 8,
+            "underlying": "0x89a3e1494bc3db81dadc893ded7476d33d47dcbd"
+        },
+        "wwanETH": {
+            "exchangeRate": 2e+26,
+            "collateralFactor": 750000000000000000,
+            "reserveFactor": 0,
+            "name": "wwanETH",
+            "symbol": "wwanETH",
+            "decimals": 8,
+            "underlying": "0x48344649b9611a891987b2db33faada3ac1d05ec"
+        },
+        "wwanUSDT": {
+            "exchangeRate": 200000000000000,
+            "collateralFactor": 750000000000000000,
+            "reserveFactor": 0,
+            "name": "wwanUSDT",
+            "symbol": "wwanUSDT",
+            "decimals": 8,
+            "underlying": "0x3d5950287B45f361774e5Fb6E50D70Eea06bC167"
+        },
+        "wwanUSDC": {
+            "exchangeRate": 200000000000000,
+            "collateralFactor": 750000000000000000,
+            "reserveFactor": 0,
+            "name": "wwanUSDC",
+            "symbol": "wwanUSDC",
+            "decimals": 8,
+            "underlying": "0x7Ff465746E4f47E1cBbB80C864cd7de9f13337Fe"
+        },
+        "wFNX": {
+            "exchangeRate": 2e+26,
+            "collateralFactor": 500000000000000000,
+            "reserveFactor": 0,
+            "name": "wFNX",
+            "symbol": "wFNX",
+            "decimals": 8,
+            "underlying": "0x974ab46969d3d9a4569546051a797729e301d6eb"
+        },
+        "wwanLINK": {
+            "exchangeRate": 2e+26,
+            "collateralFactor": 500000000000000000,
+            "reserveFactor": 0,
+            "name": "wwanLINK",
+            "symbol": "wwanLINK",
+            "decimals": 8,
+            "underlying": "0xd32C5cbe6A6dBdE0Dc7A7842e4Ac376853734388"
+        },
+        "wwanUNI": {
+            "exchangeRate": 2e+26,
+            "collateralFactor": 500000000000000000,
+            "reserveFactor": 0,
+            "name": "wwanUNI",
+            "symbol": "wwanUNI",
+            "decimals": 8,
+            "underlying": "0xFF41e7F3B22328853D351be2A8F4090E713da850"
+        },
+        "wWASP": {
+            "exchangeRate": 2e+26,
+            "collateralFactor": 100000000000000000,
+            "reserveFactor": 0,
+            "name": "wWASP",
+            "symbol": "wWASP",
+            "decimals": 8,
+            "underlying": "0x0a3b082c1CEdA3D35e5BAd2776C5A5236044a03d"
+        },
+        "wwanSUSHI": {
+            "exchangeRate": 2e+26,
+            "collateralFactor": 500000000000000000,
+            "reserveFactor": 0,
+            "name": "wwanSUSHI",
+            "symbol": "wwanSUSHI",
+            "decimals": 8,
+            "underlying": "0x48C305D49E2721a2b0cE3641236AA2eC7658A39f"
+        },
+        "wwanNBTC": {
+            "exchangeRate": 20000000000000000,
+            "collateralFactor": 750000000000000000,
+            "reserveFactor": 0,
+            "name": "wwanNBTC",
+            "symbol": "wwanNBTC",
+            "decimals": 8,
+            "underlying": "0x07fdB4E8F8e420D021b9ABeb2b1F6dCe150eF77C"
+        }
+    },
+    "StoremanOracleImplement": "0x7dc57e463e8bae5b50fc35d14e881436f17eaec1",
+    "startBlock-StoremanOracleImplement": 10989992,
+    "0.02_0.1": "0xa71f2ddb1946e349ca05ef9f8bef9b822a8e3626",
+    "startBlock-0.02_0.1": 10989993,
+    "Unitroller": "0xb3b496a8a2f684cb1d69f7febfbcbd86f12a62f9",
+    "startBlock-Unitroller": 10989994,
+    "Comptroller": "0xb57d024dd6688990623e6c49ac08e03cae09f024",
+    "startBlock-Comptroller": 10989995,
+    "PriceOracleProxy": "0x10aa7db09f9c3fd4769833bc69e2d504f654bb2e",
+    "startBlock-PriceOracleProxy": 10989998,
+    "wWAN": "0x852981b850248ba92a94a9403bffd3edd2e3fcd4",
+    "startBlock-wWAN": 10990039,
+    "wwanBTC": "0x5b52896ae248c603c21a2e962d19d82fc8ff3647",
+    "startBlock-wwanBTC": 10990043,
+    "wwanETH": "0x65192259dd04f47e2715a377364a307f0a04cd35",
+    "startBlock-wwanETH": 10990046,
+    "wwanUSDT": "0x7e4117114e5f77f51169285ad90df33d9e4fd183",
+    "startBlock-wwanUSDT": 10990050,
+    "wwanUSDC": "0xfa39004d4c58df472c2e7b29ce75bcdec3325f83",
+    "startBlock-wwanUSDC": 10990052,
+    "wFNX": "0xaa3d1a571f1a3c166303517e13be181bfb50caeb",
+    "startBlock-wFNX": 10990055,
+    "0.02_0.15": "0x4b5729c1a723d738ee4b2f8f211d756f1a4c604d",
+    "startBlock-0.02_0.15": 10990105,
+    "0_0.08": "0x22e6ce5f7155c3d68e50331e97903db5c3bd71f7",
+    "startBlock-0_0.08": 10990101,
+    "0_0.05_1_0.8": "0x4b5729c1a723d738ee4b2f8f211d756f1a4c604d",
+    "wwanLINK": "0xfb5f4dcd33d04728312f196a724963ab1d458151",
+    "startBlock-wwanLINK": 11868023,
+    "wwanUNI": "0xa89b559cd28c8890193c35d9c8f1950bf05a50b8",
+    "startBlock-wwanUNI": 11868108,
+    "wWASP": "0x5a147134cd11fd152d77ab9ba8a41069c57f5a1b",
+    "startBlock-wWASP": 11868126,
+    "wwanSUSHI": "0x627de5c588beafd769331e9949e8004cb3866130",
+    "startBlock-wwanSUSHI": 11877054,
+    "wwanNBTC": "0x1bdaae28ffc9b4d71b38c0dac89c0deb8cac577a",
+    "startBlock-wwanNBTC": 12357223
+}
