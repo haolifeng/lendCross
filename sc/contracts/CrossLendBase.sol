@@ -4,7 +4,7 @@ pragma experimental ABIEncoderV2;
 import "./Interface.sol";
 contract CrossLendBase {
     address public owner;
-    mapping(address=>bool) txParserMap;
+    mapping(address=>bool) public  txParserMap;
 
     constructor() {
         owner = msg.sender;

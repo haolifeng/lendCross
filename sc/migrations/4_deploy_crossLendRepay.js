@@ -13,7 +13,7 @@ module.exports = async function (deployer) {
    const CrossLendRepayInst = await CrossLendRepay.deployed();
    const scAddr_crossLendRepay =  CrossLendRepayInst.address;
 
-   updateScAddr('CrossLendRepay', scAddr_crossLendRepay);
+   updateScAddr('CrossLendRepay', scAddr_crossLendRepay,configPath);
    
 
 };

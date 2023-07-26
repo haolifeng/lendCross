@@ -19,6 +19,11 @@ class CrossCheckObj {
         let ret = await tx.wait();
         return ret;
     }
+
+    async getTokenManger(){
+        let ret = await this.scInst.TokenManagerAddr();
+        return ret;
+    }
 }
 
 module.exports = CrossCheckObj;

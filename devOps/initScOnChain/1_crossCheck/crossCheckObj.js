@@ -5,7 +5,7 @@ const  {
 } = require('../../../ScObjs');
 
 const { crossCheck_abi } = require('../abi');
-const nodeUrl = config.wanChain.nodeUrl;
+const nodeUrl = config.appConfig.wanChain.nodeUrl;
 const scAddr = config.scAddrs.CrossCheck;
 
 

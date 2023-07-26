@@ -5,8 +5,8 @@ import "./CrossLib.sol";
 
 contract CrossCheck {
     address public owner;
-    address TokenManagerAddr;
-    uint256 wanChainID = 2153201998;
+    address public TokenManagerAddr;
+    uint256 public wanChainID = 2153201998;
 
     struct TokenAddrPair {
         address underlyingToken;
