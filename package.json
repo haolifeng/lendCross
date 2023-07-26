@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/haolifeng/lendCross#readme",
   "dependencies": {
-    "ethers": "^6.6.2",
+    "ethers": "^5.0.0",
     "@truffle/hdwallet-provider": "^2.1.12",
     "web3":"^1.0.0"
   }

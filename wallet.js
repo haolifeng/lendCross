@@ -1,8 +1,12 @@
-const { ethers } = require('ethers');
+const ethers  = require('ethers');
 
 const config = require('./config');
 
+const words = config.appConfig.words;
+
+let admin = ethers.Wallet.fromMnemonic(words);
 
 
-let admin = ethers.Wallet.fromMnemonic(config.appConfig.words);
+console.log('admin.address', admin.address)
+
 module.exports = admin;
