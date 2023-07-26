@@ -26,3 +26,5 @@ Manifest.toml
 node_modules
 .idea
 .vscode
+
+build
