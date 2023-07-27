@@ -24,6 +24,10 @@ class CrossCheckObj {
         let ret = await this.scInst.TokenManagerAddr();
         return ret;
     }
+    async getwanChainID(){
+        let wanchainID = await this.scInst.wanChainID();
+        return wanchainID.toString();
+    }
 }
 
 module.exports = CrossCheckObj;
