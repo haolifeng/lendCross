@@ -39,6 +39,10 @@ class CrossCheckObj {
         let ctokenAddr = await this.scInst.UnderlyingTokenToCTokenMap(underlyingTokenAddr);
         return ctokenAddr.toString();
     }
+    async getUnderlyingToken( tokenPairID){
+        let underlyingTokenAddr = await this.scInst.getUnderlyingToken(tokenPairID);
+        return underlyingTokenAddr.toString();
+    }
 }
 
 module.exports = CrossCheckObj;
