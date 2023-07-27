@@ -20,7 +20,7 @@ const { crossCheck_abi,
     Type1TxParser_abi,
     Type2TxParser_abi,} = require('../abi');
 
-const crossCheckScAddr = config.scAdds.CrossCheck;
+const crossCheckScAddr = config.scAddrs.CrossCheck;
 const crossLendMintScAddr = config.scAddrs.CrossLendMint;
 const crossLendRepayScAddr = config.scAddrs.CrossLendRepay;
 
