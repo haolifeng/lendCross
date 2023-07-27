@@ -1,7 +1,7 @@
 const config = require('../config');
-const wanUrl = config.wanChain.nodeUrl;
+const wanUrl = config.appConfig.wanChain.nodeUrl;
 
-const type0TxParserScAddr = config.scAddr.Type0TxParser;
+const type0TxParserScAddr = config.scAddrs.Type0TxParser;
 const admin = require('../../../wallet');
 
 const {
@@ -20,9 +20,9 @@ const { crossCheck_abi,
     Type1TxParser_abi,
     Type2TxParser_abi,} = require('../abi');
 
-const crossCheckScAddr = config.scAddr.CrossCheck;
-const crossLendMintScAddr = config.scAddr.CrossLendMint;
-const crossLendRepayScAddr = config.scAddr.CrossLendRepay;
+const crossCheckScAddr = config.scAddrs.CrossCheck;
+const crossLendMintScAddr = config.scAddrs.CrossLendMint;
+const crossLendRepayScAddr = config.scAddrs.CrossLendRepay;
 
 const f = async ()=>{
     let tx0TxParser = new Type0TxParserObj(type0TxParserScAddr,wanUrl, Type0TxParser_abi);
