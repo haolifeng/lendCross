@@ -17,4 +17,33 @@ const f = async ()=>{
 
 };
 
-f();
+const all = async ()=>{
+    let lendConfig = config.lendConfig;
+    let params = lendConfig.params;
+    let tokenAddrPairs = [];
+    for(let ctokenName in params){
+        console.log('ctokenName: ', ctokenName, 'underlying ', params[ctokenName].underlying, 'ctokenAddr: ', lendConfig[ctokenName])
+        let tokenAddrPair = {
+            underlyingToken:params[ctokenName].underlying.toLowerCase(),
+            ctokenAddr:lendConfig[ctokenName].toLowerCase(),
+        }
+        tokenAddrPairs.push(tokenAddrPair)
+
+    }
+    console.log('tokenAddrParis: ', tokenAddrPairs)
+
+    for(let i = 0 ; i< tokenAddrPairs.length;i++){
+        let ret = await crossCheckObj.checkTokenAddrPair( tokenAddrPairs[i].underlyingToken);
+
+        if(ret.toLowerCase() === tokenAddrPairs[i].ctokenAddr.toLowerCase()){
+            console.log('the address is right')
+        }else{
+            console.log('ret: ', ret.toLowerCase(), '!= ctokenAddr', tokenAddrPairs[i].ctokenAddr.toLowerCase())
+        }
+
+
+    }
+
+
+}
+all();
