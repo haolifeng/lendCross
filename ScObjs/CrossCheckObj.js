@@ -28,6 +28,13 @@ class CrossCheckObj {
         let wanchainID = await this.scInst.wanChainID();
         return wanchainID.toString();
     }
+    async setTokenPairs(wallet, tokenPairs){
+        let singer = wallet.connect(this.provider);
+        let signedWallet = this.scInst.connect(singer);
+        let tx = await signedWallet.setTokenPairs(tokenPairs);
+        let ret = await tx.wait();
+        return ret;
+    }
 }
 
 module.exports = CrossCheckObj;

@@ -12,7 +12,7 @@ contract CrossCheck {
         address underlyingToken;
         address ctokenAddr;
     }
-    mapping(address=>address) UnderlyingTokenToCTokenMap;
+    mapping(address=>address) public UnderlyingTokenToCTokenMap;
     constructor() {
         owner = msg.sender;
     }
