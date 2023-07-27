@@ -28,12 +28,16 @@ class CrossCheckObj {
         let wanchainID = await this.scInst.wanChainID();
         return wanchainID.toString();
     }
-    async setTokenPairs(wallet, tokenPairs){
+    async setTokenAddrPairs(wallet, tokenAddrPairs){
         let singer = wallet.connect(this.provider);
         let signedWallet = this.scInst.connect(singer);
-        let tx = await signedWallet.setTokenPairs(tokenPairs);
+        let tx = await signedWallet.setTokenAddrPairs(tokenAddrPairs);
         let ret = await tx.wait();
         return ret;
+    }
+    async checkTokenAddrPair(underlyingTokenAddr){
+        let ctokenAddr = await this.scInst.UnderlyingTokenToCTokenMap(underlyingTokenAddr);
+        return ctokenAddr.toString();
     }
 }
 

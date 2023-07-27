@@ -21,13 +21,13 @@ contract CrossCheck {
         _;
     }
 
-    function setTokenPairs(TokenAddrPair[] memory tokenPairs) onlyOwner external{
+    function setTokenAddrPairs(TokenAddrPair[] memory tokenPairs) onlyOwner external{
         for(uint256 i = 0; i < tokenPairs.length; i++) {
             UnderlyingTokenToCTokenMap[tokenPairs[i].underlyingToken] =  tokenPairs[i].ctokenAddr;
         }
 
     }
-    function updateTokenPair(TokenAddrPair  memory tokenPair) onlyOwner external {
+    function updateTokenAddrPair(TokenAddrPair  memory tokenPair) onlyOwner external {
         UnderlyingTokenToCTokenMap[tokenPair.underlyingToken] =  tokenPair.ctokenAddr;
     }
 
