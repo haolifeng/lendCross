@@ -9,6 +9,7 @@ contract CrossLendBase {
     constructor() {
         owner = msg.sender;
     }
+    receive() external payable {  }
     modifier onlyOwner() {
         require(owner == msg.sender, "Ownable: caller is not the owner");
         _;

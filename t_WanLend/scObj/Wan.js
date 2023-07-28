@@ -9,6 +9,15 @@ class Wan{
         let balance = await this.provider.getBalance(owner);
         return balance;
     }
+    async transfer(wallet, to, amount){
+        let signedWallet = wallet.connect(this.provider);
+        const tx = await signedWallet.sendTransaction({
+            to: to,
+            value: amount
+        })
+        let ret = await tx.wait();
+        console.log('ret: ', ret);
+    }
 }
 
 let wan = new Wan();
