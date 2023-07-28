@@ -9,7 +9,7 @@ class CWanUSDT{
         this.provider = new ethers.providers.JsonRpcProvider(config.appConfig.wanChain.nodeUrl);
         this.scInst = new ethers.Contract(scAddr,abi,this.provider);
     }
-    async balanceOf(address){
+    async getBalance(address){
         let bnBalance  = await this.scInst.balanceOf(address);
         return bnBalance;
     }
