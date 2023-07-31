@@ -6,10 +6,31 @@ class BaseTxParseObj {
         this.provider = new ethers.providers.JsonRpcProvider(nodeUrl);
         this.scInst = new ethers.Contract(this.scAddr, abi, this.provider);
     }
-    async setDependsContractAddr( wallet, _crossCheckAddr,  _crosssLendRepayAddr,  _crossLendMintAddr){
+    async setDependsContractAddr( wallet, _crossCheckAddr,  _crossLendRepayAddr,  _crossLendMintAddr){
         let singer = wallet.connect(this.provider);
         let signedWallet = this.scInst.connect(singer);
-        let tx = await signedWallet.setDependsContractAddr(_crossCheckAddr,  _crosssLendRepayAddr,  _crossLendMintAddr);
+        let tx = await signedWallet.setDependsContractAddr(_crossCheckAddr,  _crossLendRepayAddr,  _crossLendMintAddr);
+        let ret = await tx.wait();
+        return ret;
+    }
+    async setDependCrossCheckAddr(wallet,  _crossCheckAddr)  {
+        let singer = wallet.connect(this.provider);
+        let signedWallet = this.scInst.connect(singer);
+        let tx = await signedWallet.setDependCrossCheckAddr(_crossCheckAddr );
+        let ret = await tx.wait();
+        return ret;
+    }
+    async setDependLendRepayAddr(wallet,  _crossLendRepayAddr){
+        let singer = wallet.connect(this.provider);
+        let signedWallet = this.scInst.connect(singer);
+        let tx = await signedWallet.setDependLendRepayAddr(  _crossLendRepayAddr);
+        let ret = await tx.wait();
+        return ret;
+    }
+    async setDependLendMintAddr(wallet,  _crossLendMintAddr)  {
+        let singer = wallet.connect(this.provider);
+        let signedWallet = this.scInst.connect(singer);
+        let tx = await signedWallet.setDependLendMintAddr( _crossLendMintAddr);
         let ret = await tx.wait();
         return ret;
     }
