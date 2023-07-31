@@ -14,8 +14,8 @@ contract BaseTxParser {
     }
     address public owner;
     address public crossCheckAddr;
-    address public crossLendRepayAddr;
-    address public crossLendMintAddr;
+    address payable public crossLendRepayAddr;
+    address payable public crossLendMintAddr;
 
     constructor() {
         owner = msg.sender;
@@ -52,10 +52,19 @@ contract BaseTxParser {
         txTypeBytes = RLPEncode.encodeUint(txType);
     }
 
-    function setDependsContractAddr(address _crossCheckAddr, address _crosssLendRepayAddr, address _crossLendMintAddr) onlyOwner external {
+    function setDependsContractAddr(address _crossCheckAddr, address _crossLendRepayAddr, address _crossLendMintAddr) onlyOwner external {
         crossCheckAddr = _crossCheckAddr;
-        crossLendRepayAddr = _crosssLendRepayAddr;
-        crossLendMintAddr = _crossLendMintAddr;
+        crossLendRepayAddr = payable(_crossLendRepayAddr);
+        crossLendMintAddr = payable(_crossLendMintAddr);
+    }
+    function setDependCrossCheckAddr(address _crossCheckAddr) onlyOwner external {
+        crossCheckAddr = _crossCheckAddr;
+    }
+    function setDependLendRepayAddr(address _crossLendRepayAddr) onlyOwner external {
+        crossLendRepayAddr = payable(_crossLendRepayAddr);
+    }
+    function setDependLendMintAddr(address _crossLendMintAddr) onlyOwner external {
+        crossLendMintAddr = payable(_crossLendMintAddr);
     }
 
     function crossOperation(bytes calldata data, address from) internal   {
