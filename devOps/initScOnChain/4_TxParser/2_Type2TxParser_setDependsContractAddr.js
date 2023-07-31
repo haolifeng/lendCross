@@ -29,6 +29,25 @@ const f = async ()=>{
     let ret = await tx2TxParser.setDependsContractAddr(admin, crossCheckScAddr, crossLendRepayScAddr, crossLendMintScAddr);
     console.log('ret: ', ret);
 }
-
-f();
+const setCheckScAddr = async ()=>{
+    let tx2TxParser = new Type2TxParserObj(ScAddr,wanUrl, Type2TxParser_abi);
+    let ret = await tx2TxParser.setDependCrossCheckAddr(admin, crossCheckScAddr);
+    console.log('ret: ', ret);
+}
+const setLendRepayScAddr = async ()=>{
+    let tx2TxParser = new Type2TxParserObj(ScAddr,wanUrl, Type2TxParser_abi);
+    let ret = await tx2TxParser.setDependLendRepayAddr(admin, crossLendRepayScAddr);
+    console.log('ret: ', ret);
+}
+const setLendMintScAddr = async ()=>{
+    let tx2TxParser = new Type2TxParserObj(ScAddr,wanUrl, Type2TxParser_abi);
+    let ret = await tx2TxParser.setDependLendMintAddr(admin, crossLendMintScAddr);
+    console.log('ret: ', ret);
+}
+//f();
+(async function(){
+    await setCheckScAddr();
+    await setLendRepayScAddr();
+    await setLendMintScAddr();
+})()
 

@@ -9,7 +9,14 @@ class CrossLendBaseObj {
     async setTxParse(wallet, txParseScAddr){
         let singer = wallet.connect(this.provider);
         let signedWallet = this.scInst.connect(singer);
-        let tx = signedWallet.setTxParse(txParseScAddr);
+        let tx = await signedWallet.setTxParse(txParseScAddr);
+        let ret = await tx.wait();
+        return ret;
+    }
+    async delTxParse(wallet, txParseScAddr){
+        let singer = wallet.connect(this.provider);
+        let signedWallet = this.scInst.connect(singer);
+        let tx = await signedWallet.delTxParse(txParseScAddr);
         let ret = await tx.wait();
         return ret;
     }

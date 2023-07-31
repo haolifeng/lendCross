@@ -24,11 +24,32 @@ const crossCheckScAddr = config.scAddrs.CrossCheck;
 const crossLendMintScAddr = config.scAddrs.CrossLendMint;
 const crossLendRepayScAddr = config.scAddrs.CrossLendRepay;
 
-const f = async ()=>{
+const all = async ()=>{
     let tx0TxParser = new Type0TxParserObj(type0TxParserScAddr,wanUrl, Type0TxParser_abi);
     let ret = await tx0TxParser.setDependsContractAddr(admin, crossCheckScAddr, crossLendRepayScAddr, crossLendMintScAddr);
     console.log('ret: ', ret);
 }
 
-f();
+const setCheckScAddr = async ()=>{
+    let tx0TxParser = new Type0TxParserObj(type0TxParserScAddr,wanUrl, Type0TxParser_abi);
+    let ret = await tx0TxParser.setDependCrossCheckAddr(admin, crossCheckScAddr);
+    console.log('ret: ', ret);
+}
+const setLendRepayScAddr = async ()=>{
+    let tx0TxParser = new Type0TxParserObj(type0TxParserScAddr,wanUrl, Type0TxParser_abi);
+    let ret = await tx0TxParser.setDependLendRepayAddr(admin, crossLendRepayScAddr);
+    console.log('ret: ', ret);
+}
+const setLendMintScAddr = async ()=>{
+    let tx0TxParser = new Type0TxParserObj(type0TxParserScAddr,wanUrl, Type0TxParser_abi);
+    let ret = await tx0TxParser.setDependLendMintAddr(admin, crossLendMintScAddr);
+    console.log('ret: ', ret);
+}
+//all();
+
+(async function(){
+    await setCheckScAddr();
+    await setLendRepayScAddr();
+    await setLendMintScAddr();
+})()
 

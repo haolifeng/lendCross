@@ -23,5 +23,8 @@ const main = async ()=>{
         let ret = await crossLendObj.txParserMap(txParsers[i]);
         console.log('ret: ', ret)
     }
+
+    let ret = await crossLendObj.txParserMap(admin.address)
+    console.log('admin.address : ', ret)
 }
 main()
