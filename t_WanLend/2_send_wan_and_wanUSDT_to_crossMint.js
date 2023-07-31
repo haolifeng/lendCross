@@ -11,10 +11,11 @@ let lendMintScAddr = config.scAddrs.CrossLendMint;
 let lendRepayScAddr = config.scAddrs.CrossLendRepay;
 
 let admin = require('../wallet');
+const {BigNumber, ethers} = require("ethers");
 
 const main = async ()=>{
-     await wan.transfer(admin, lendMintScAddr, 5);
-    let r = await wanUSDT.transfer(admin, lendMintScAddr, 1);
+     //await wan.transfer(admin, lendMintScAddr, 5);
+    let r = await wanUSDT.transfer(admin, lendMintScAddr, 259176);
     console.log('r: ', r);
 }
 main();

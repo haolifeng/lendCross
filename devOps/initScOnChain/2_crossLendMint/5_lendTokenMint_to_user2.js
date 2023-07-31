@@ -13,7 +13,7 @@ const {
 } = require('../../../ScObjs')
 const {BigNumber} = require("ethers");
 
-let amount = BigNumber.from('1000000')
+let amount = 59177
 
 const main = async ()=>{
     let crossLendMinObj = new CrossLendMintObj(scAddr,wanUrl,crossLendMint_abi);

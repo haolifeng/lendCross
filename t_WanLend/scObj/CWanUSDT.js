@@ -13,6 +13,27 @@ class CWanUSDT{
         let bnBalance  = await this.scInst.balanceOf(address);
         return bnBalance;
     }
+
+    async redeem(wallet, redeemAmount) {
+        try {
+            let singer = wallet.connect(this.provider);
+            let signScInst = this.scInst.connect(singer);
+
+
+            let tx = await signScInst.redeem(redeemAmount, {
+                gasLimit: 50000000
+            });
+
+            let ret = await tx.wait();
+            return ret;
+
+
+        } catch (e) {
+
+            return false;
+        }
+    }
+
 }
 
 let cWanUSDT = new CWanUSDT();
