@@ -11,6 +11,25 @@ class CWan{
         let bnBalance  = await this.scInst.balanceOf(owner);
         return bnBalance;
     }
+    async redeem(wallet, redeemAmount) {
+        try {
+            let singer = wallet.connect(this.provider);
+            let signScInst = this.scInst.connect(singer);
+
+
+            let tx = await signScInst.redeem(redeemAmount, {
+                gasLimit: 50000000
+            });
+
+            let ret = await tx.wait();
+            return ret;
+
+
+        } catch (e) {
+
+            return false;
+        }
+    }
 }
 let cWan = new CWan();
 

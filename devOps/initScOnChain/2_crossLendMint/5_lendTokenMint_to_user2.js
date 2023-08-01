@@ -16,7 +16,7 @@ const {BigNumber} = require("ethers");
 let crossLendMinObj = new CrossLendMintObj(scAddr,wanUrl,crossLendMint_abi);
 
 
-const main = async ()=>{
+const lendTokenMint = async ()=>{
     let amount = await crossLendMinObj.IERC20Balance(underlyingTokenScAddr);
     console.log('wanusdt balance: ', amount.toString());
 
@@ -25,4 +25,11 @@ const main = async ()=>{
     console.log('ret: ', ret);
 }
 
+const lendWanMint = async ()=>{
+    let amount = await crossLendMinObj.getWanBalance();
+    console.log('wan balance: ', amount.toString());
+}
+const main = async ()=>{
+    lendWanMint();
+}
 main();

@@ -32,10 +32,18 @@ const drawWanUSDT = async ()=>{
     let ret = await wanUSDT.transfer(user2, admin.address,wanUsdtBalance);
     console.log('ret: ', ret);
 }
+const drawCWan = async ()=>{
+    let cWanBalance = await cWan.getBalance(user2.address);
+    console.log('cWanBalance: ', cWanBalance.toString());
+
+    let ret = await cWan.redeem(user2, cWanBalance);
+    console.log('ret: ', ret);
+}
 
 const main = async ()=>{
     //await drawWanUSDT();
-    await drawCWanUSDT();
+    //await drawCWanUSDT();
+    await drawCWan();
 
 }
 
