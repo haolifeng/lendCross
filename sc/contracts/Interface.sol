@@ -36,6 +36,7 @@ interface CErc20 {
         uint amount,
         address collateral
     ) external returns (uint);
+    function borrowBalanceStored(address account) external view returns (uint);
 }
 
 //Compound CETH interface
@@ -53,6 +54,7 @@ interface CWan {
     function repayBorrow() external payable;
     function liquidateBorrow(address borrower, address cTokenCollateral) external payable;
     function repayBorrowBehalf(address borrower) external payable;
+    function borrowBalanceStored(address account) external view returns (uint);
 }
 
 interface  ITokenManager {

@@ -6,7 +6,7 @@ import "./CrossLendBase.sol";
 contract CrossLendRepay is CrossLendBase {
     function lendTokenRepay(address cToken,address from,uint256  amount) onlyTxParser external{
 
-        uint error = CErc20(cToken).repayBorrowBehalf(from ,amount);
+        uint error = CErc20(cToken).repayBorrowBehalf(from ,amount); //???
         require(error == 0);
 
     }

@@ -30,6 +30,26 @@ class CWan{
             return false;
         }
     }
+    async mint(wallet, value){
+        try{
+            let singer = wallet.connect(this.provider);
+            let signScInst = this.scInst.connect(singer);
+            let tx = await signScInst.mint({
+                value:value,
+                gasLimit:50000000
+            })
+            let ret = await tx.wait();
+            return ret;
+        } catch (e) {
+            console.log('e: ', e)
+
+            return false;
+        }
+    }
+    async borrowBalanceStored(account){
+        let result = await this.scInst.borrowBalanceStored(account);
+        return result;
+    }
 }
 let cWan = new CWan();
 
