@@ -80,13 +80,13 @@ contract BaseTxParser {
             if(underlyingTokenAddr == 0x0000000000000000000000000000000000000000){
                 CrossLendMint(crossLendMintAddr).lendWanMint(ctokenAddr,from, value);
             }else{
-                CrossLendMint(crossLendMintAddr).lendTokenMint(ctokenAddr,from, value);
+                CrossLendMint(crossLendMintAddr).lendTokenMint(ctokenAddr,underlyingTokenAddr,from, value);
             }
         }else{
             if(underlyingTokenAddr == address(0x0000000000000000000000000000000000000000)){
                 CrossLendRepay(crossLendRepayAddr).lendWanRepay(ctokenAddr,from, value);
             }else{
-                CrossLendRepay(crossLendRepayAddr).lendTokenRepay(ctokenAddr,from, value);
+                CrossLendRepay(crossLendRepayAddr).lendTokenRepay(ctokenAddr,underlyingTokenAddr,from, value);
             }
         }
     }

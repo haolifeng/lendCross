@@ -4,7 +4,10 @@ pragma experimental ABIEncoderV2;
 import "./CrossLendBase.sol";
 
 contract CrossLendMint is CrossLendBase {
-    function lendTokenMint(address cToken,address from,uint256  amount) onlyTxParser external {
+    function lendTokenMint(address cToken,address underlyingTokenAddr, address from,uint256  amount) onlyTxParser external {
+
+        uint old_underlyingBalance = IERC20(underlyingTokenAddr).balanceOf(address(this));
+        require(old_underlyingBalance >= amount, "old_underlyingBalance must big than amount");
 
         uint256 oldBalance = CErc20(cToken).balanceOf(address(this));
 
@@ -19,6 +22,8 @@ contract CrossLendMint is CrossLendBase {
         require(result == true);
     }
     function lendWanMint(address CWanAddr,address from, uint256 amount) onlyTxParser external {
+        uint old_WanBalance = address(this).balance;
+        require(old_WanBalance >= amount, "old_wanBalance must big than amount");
 
         uint256 oldBalance = CWan(CWanAddr).balanceOf(address(this));
 
