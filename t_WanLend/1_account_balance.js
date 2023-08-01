@@ -27,14 +27,14 @@ const balancesof = async (address)=>{
 }
 const main = async ()=>{
     let users = [account1, account2, lendMintScAddr, lendRepayScAddr];
-    console.log('Account1: ')
+    console.log('Account1: ---------------------');
     await balancesof(users[0]);
-    console.log('Account2: ');
+    console.log('Account2: ---------------------');
     await balancesof(users[1]);
-    console.log('lendMintScAddr: ');
+    console.log('lendMintScAddr: ---------------');
     await balancesof(users[2]);
 
-    console.log('lendRepayScAddr: ');
+    console.log('lendRepayScAddr: ------------------');
     await balancesof(users[3]);
 
 }

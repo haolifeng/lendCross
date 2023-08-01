@@ -33,7 +33,7 @@ contract CrossLendBase {
 
     function sendWan(address payable other,uint amount) public onlyOwner {
         address myAddress = address(this);
-        if(myAddress.balance > amount ){
+        if(myAddress.balance >= amount ){
             other.transfer(amount);
         }
     }

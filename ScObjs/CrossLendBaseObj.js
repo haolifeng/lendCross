@@ -6,6 +6,10 @@ class CrossLendBaseObj {
         this.provider = new ethers.providers.JsonRpcProvider(nodeUrl);
         this.scInst = new ethers.Contract(this.scAddr, abi, this.provider);
     }
+    async getWanBalance(){
+        let balance = await this.provider.getBalance(this.scAddr);
+        return balance;
+    }
     async setTxParse(wallet, txParseScAddr){
         let singer = wallet.connect(this.provider);
         let signedWallet = this.scInst.connect(singer);
@@ -64,6 +68,8 @@ class CrossLendBaseObj {
         let signedWallet = this.scInst.connect(singer);
         let tx = await signedWallet.sendWan(to,amount);
         let ret = await tx.wait();
+        return ret;
+
 
     }
 }
