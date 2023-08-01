@@ -24,6 +24,8 @@ const balancesof = async (address)=>{
 
     let cWanUSDTBalance = await cWanUSDT.getBalance(address);
     console.log('cWanUSDT Balance: ', cWanUSDTBalance.toString());
+
+    console.log('\n')
 }
 const main = async ()=>{
     let users = [account1, account2, lendMintScAddr, lendRepayScAddr];

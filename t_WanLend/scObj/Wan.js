@@ -16,7 +16,7 @@ class Wan{
             value: amount
         })
         let ret = await tx.wait();
-        console.log('ret: ', ret);
+        return ret;
     }
 }
 

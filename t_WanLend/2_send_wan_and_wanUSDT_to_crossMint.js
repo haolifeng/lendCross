@@ -14,8 +14,9 @@ let admin = require('../wallet');
 const {BigNumber, ethers} = require("ethers");
 
 const main = async ()=>{
-     //await wan.transfer(admin, lendMintScAddr, 5);
-    let r = await wanUSDT.transfer(admin, lendMintScAddr, 259176);
-    console.log('r: ', r);
+    //let ret =  await wan.transfer(admin, lendMintScAddr, 5);
+    //console.log('sendWan ret: ', ret);
+    let r = await wanUSDT.transfer(admin, lendMintScAddr, 200012);
+    console.log('send wanUSDt r: ', r);
 }
 main();

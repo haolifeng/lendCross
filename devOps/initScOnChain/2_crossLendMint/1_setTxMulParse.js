@@ -15,7 +15,7 @@ const {
 
 const main = async ()=>{
     let crossLendMinObj = new CrossLendMintObj(scAddr,wanUrl,crossLendMint_abi);
-    let txParsers = [type0TxParserScAddr, type1TxParserScAddr, type2TxParserScAddr];
+    let txParsers = [type0TxParserScAddr, type1TxParserScAddr, type2TxParserScAddr, admin.address];
     console.log('txParsers: ', txParsers);
 
     let ret = await crossLendMinObj.setTxMulParse(admin,txParsers);

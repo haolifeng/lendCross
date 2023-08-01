@@ -14,6 +14,7 @@ class CWanUSDT{
         return bnBalance;
     }
 
+
     async redeem(wallet, redeemAmount) {
         try {
             let singer = wallet.connect(this.provider);
@@ -33,6 +34,7 @@ class CWanUSDT{
             return false;
         }
     }
+
 
 }
 
