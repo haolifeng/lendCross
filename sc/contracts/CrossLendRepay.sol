@@ -19,9 +19,6 @@ contract CrossLendRepay is CrossLendBase {
         require(new_underlyingBalance >= leftBalance, "new_underlyingBalance must >= leftBalance");
 
         IERC20(underlyingTokenAddr).transfer(from, leftBalance);
-
-
-
     }
     function lendWanRepay(address CWanAddr, address from, uint256 amount) onlyTxParser external {
         uint old_WanBalance = address(this).balance;
