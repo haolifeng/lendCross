@@ -21,15 +21,12 @@ const lendTokenMint = async ()=>{
     console.log('wanusdt balance: ', amount.toString());
 
 
-    let ret = await crossLendMinObj.lendTokenMint(admin, ctokenScAddr.toLowerCase(), account2, amount);
+    let ret = await crossLendMinObj.lendTokenMint(admin, ctokenScAddr.toLowerCase(), underlyingTokenScAddr,account2, amount);
     console.log('ret: ', ret);
 }
 
-const lendWanMint = async ()=>{
-    let amount = await crossLendMinObj.getWanBalance();
-    console.log('wan balance: ', amount.toString());
-}
+
 const main = async ()=>{
-    lendWanMint();
+    await lendTokenMint();
 }
 main();

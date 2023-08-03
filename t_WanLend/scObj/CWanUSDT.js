@@ -6,6 +6,7 @@ const abi = require('../abi/CErc20.json');
 const scAddr = config.lendConfig.w2wanUSDT.toLowerCase();
 class CWanUSDT{
     constructor() {
+        this.scAddr = scAddr;
         this.provider = new ethers.providers.JsonRpcProvider(config.appConfig.wanChain.nodeUrl);
         this.scInst = new ethers.Contract(scAddr,abi,this.provider);
     }

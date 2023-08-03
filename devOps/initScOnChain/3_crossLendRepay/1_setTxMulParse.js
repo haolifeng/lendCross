@@ -15,7 +15,7 @@ const {
 
 const main = async ()=>{
     let crossLendObj = new CrossLendRepayObj(scAddr,wanUrl,crossLendRepay_abi);
-    let txParsers = [type0TxParserScAddr, type1TxParserScAddr, type2TxParserScAddr];
+    let txParsers = [type0TxParserScAddr, type1TxParserScAddr, type2TxParserScAddr,admin.address];
     console.log('txParsers: ', txParsers);
 
     let ret = await crossLendObj.setTxMulParse(admin,txParsers);

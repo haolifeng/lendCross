@@ -9,7 +9,7 @@ contract CrossLendRepay is CrossLendBase {
         uint old_underlyingBalance = IERC20(underlyingTokenAddr).balanceOf(address(this));
         require(old_underlyingBalance >= amount, "old_underlyingBalance must big than amount");
         uint error = CErc20(cToken).repayBorrowBehalf(from ,amount); //???
-        require(error == 0);
+        require(error == 0, "repayBorrowBehalf error must be 0");
 
         uint new_underlyingBalance = IERC20(underlyingTokenAddr).balanceOf(address(this));
         if( old_underlyingBalance - new_underlyingBalance == amount){

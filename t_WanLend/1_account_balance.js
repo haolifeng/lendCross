@@ -1,8 +1,8 @@
 const config = require('../config');
+
 const cWan = require('./scObj/CWan');
 const cWanUSDT = require('./scObj/CWanUSDT');
 const wan = require('./scObj/Wan');
-
 const wanUSDT = require('./scObj/WanUSDT');
 
 let account1 = "0xEF48C3AB7f184e469504Bdbd9C07883Ab4427c66";
@@ -17,13 +17,13 @@ const balancesof = async (address)=>{
     console.log( 'wan Balance: ', wanBalance.toString());
 
     let wanUSDT_balance = await wanUSDT.balanceOf(address);
-    console.log('wanUSDT Balance: ', wanUSDT_balance.toString());
+    console.log('wanUSDT addr: ',wanUSDT.scAddr,' Balance: ', wanUSDT_balance.toString());
 
     let cwanBalance = await cWan.getBalance(address);
-    console.log('cWan Balance: ', cwanBalance.toString());
+    console.log('cWan addr: ', cWan.scAddr,' Balance: ', cwanBalance.toString());
 
     let cWanUSDTBalance = await cWanUSDT.getBalance(address);
-    console.log('cWanUSDT Balance: ', cWanUSDTBalance.toString());
+    console.log('cWanUSDT addr:',cWanUSDT.scAddr, ' Balance: ', cWanUSDTBalance.toString());
 
     console.log('\n')
 }

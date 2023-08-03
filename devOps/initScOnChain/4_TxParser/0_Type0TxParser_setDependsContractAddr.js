@@ -48,7 +48,7 @@ const setLendMintScAddr = async ()=>{
 //all();
 
 (async function(){
-    await setCheckScAddr();
+    //await setCheckScAddr();
     await setLendRepayScAddr();
     await setLendMintScAddr();
 })()
