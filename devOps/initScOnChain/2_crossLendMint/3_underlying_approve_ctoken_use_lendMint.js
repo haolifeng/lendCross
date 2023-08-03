@@ -10,7 +10,7 @@ const type1TxParserScAddr = config.scAddrs.Type1TxParser;
 const type2TxParserScAddr = config.scAddrs.Type2TxParser;
 
 const {
-    CrossCheckObj,CrossLendMintObj,CrossLendRepayObj,Type0TxParserObj,Type1TxParserObj,Type2TxParserObj
+    CrossCheckObj,CrossLendMintObj,CrossLendRepayObj,Type0TxParserObj,Type1TxParserObj,Type2TxParserObj, BaseErc20Obj
 } = require('../../../ScObjs')
 const {BigNumber} = require("ethers");
 
@@ -22,11 +22,14 @@ const main = async ()=>{
     let tokenAddrPairs = [];
     for(let ctokenName in params){
         console.log('ctokenName: ', ctokenName, 'underlying ', params[ctokenName].underlying, 'ctokenAddr: ', lendConfig[ctokenName])
-        let tokenAddrPair = {
-            underlyingToken:params[ctokenName].underlying.toLowerCase(),
-            ctokenAddr:lendConfig[ctokenName].toLowerCase(),
+        if(lendConfig[ctokenName]){
+            let tokenAddrPair = {
+                underlyingToken:params[ctokenName].underlying.toLowerCase(),
+                ctokenAddr:lendConfig[ctokenName].toLowerCase()
+            }
+            tokenAddrPairs.push(tokenAddrPair)
         }
-        tokenAddrPairs.push(tokenAddrPair)
+
 
     }
     console.log('tokenAddrParis: ', tokenAddrPairs)
@@ -37,9 +40,15 @@ const main = async ()=>{
             continue;
         }
         else{
-            let ret = await  crossLendMinObj.IERC20Approve(admin, tokenAddrPairs[i].underlyingToken, tokenAddrPairs[i].ctokenAddr, BigNumber.from(MAX_APPROVE));
-            console.log('ret: ', ret);
-
+            let erc20 = new BaseErc20Obj(wanUrl, underlyTokenScAddr);
+            let name = await erc20.name();
+            let approveNum = await erc20.allowance(scAddr, tokenAddrPairs[i].ctokenAddr)
+            if(approveNum.eq(0)){
+                let ret = await  crossLendMinObj.IERC20Approve(admin, tokenAddrPairs[i].underlyingToken, tokenAddrPairs[i].ctokenAddr, BigNumber.from(MAX_APPROVE));
+                console.log('ret: ', ret);
+            }else {
+                console.log('name:', name, ' approveName: ', approveNum.toString());
+            }
         }
     }
 

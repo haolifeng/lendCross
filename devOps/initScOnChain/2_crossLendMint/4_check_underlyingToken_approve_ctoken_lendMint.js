@@ -17,11 +17,14 @@ const main = async ()=>{
     let tokenAddrPairs = [];
     for(let ctokenName in params){
         console.log('ctokenName: ', ctokenName, 'underlying ', params[ctokenName].underlying, 'ctokenAddr: ', lendConfig[ctokenName])
-        let tokenAddrPair = {
-            underlyingToken:params[ctokenName].underlying.toLowerCase(),
-            ctokenAddr:lendConfig[ctokenName].toLowerCase(),
+        if(lendConfig[ctokenName]){
+            let tokenAddrPair = {
+                underlyingToken:params[ctokenName].underlying.toLowerCase(),
+                ctokenAddr:lendConfig[ctokenName].toLowerCase()
+            }
+            tokenAddrPairs.push(tokenAddrPair)
         }
-        tokenAddrPairs.push(tokenAddrPair)
+
 
     }
     console.log('tokenAddrParis: ', tokenAddrPairs)
