@@ -5,8 +5,8 @@ const scAddr = config.scAddrs.CrossLendMint;
 const { crossLendMint_abi } = require('../abi');
 const admin = require('../../../wallet');
 
-const ctokenScAddr = config.lendConfig.wwanUSDT
-const underlyingTokenScAddr = config.lendConfig.params.wwanUSDT.underlying.toLowerCase();
+const ctokenScAddr = config.lendConfig.w2wanUSDT
+const underlyingTokenScAddr = config.lendConfig.params.w2wanUSDT.underlying.toLowerCase();
 
 const cWanAddr = config.lendConfig.wWAN;
 

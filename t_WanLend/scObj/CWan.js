@@ -1,7 +1,7 @@
 const config = require('../../config')
 const {ethers} = require("ethers");
 const abi = require("../abi/CWan.json");
-const scAddr = config.lendConfig.wWAN.toLowerCase();
+const scAddr = config.lendConfig.w2WAN.toLowerCase();
 class CWan{
     constructor() {
         this.provider = new ethers.providers.JsonRpcProvider(config.appConfig.wanChain.nodeUrl);

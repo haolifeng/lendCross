@@ -5,8 +5,8 @@ const scAddr = config.scAddrs.CrossLendRepay;
 const { crossLendRepay_abi } = require('../abi');
 const admin = require('../../../wallet');
 
-const ctokenScAddr = config.lendConfig.wwanUSDT
-const underlyingTokenScAddr = config.lendConfig.params.wwanUSDT.underlying.toLowerCase();
+const ctokenScAddr = config.lendConfig.w2wanUSDT
+const underlyingTokenScAddr = config.lendConfig.params.w2wanUSDT.underlying.toLowerCase();
 
 let account1 = "0xEF48C3AB7f184e469504Bdbd9C07883Ab4427c66";
 let account2 = "0xdC484B57a5CC0563b42C2e3D37466b14186f501b"

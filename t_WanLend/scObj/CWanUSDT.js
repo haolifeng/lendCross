@@ -3,7 +3,7 @@ const config = require('../../config')
 
 const abi = require('../abi/CErc20.json');
 
-const scAddr = config.lendConfig.wwanUSDT.toLowerCase();
+const scAddr = config.lendConfig.w2wanUSDT.toLowerCase();
 class CWanUSDT{
     constructor() {
         this.provider = new ethers.providers.JsonRpcProvider(config.appConfig.wanChain.nodeUrl);
