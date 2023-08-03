@@ -1,0 +1,32 @@
+const config = require('../config');
+const wanUrl = config.appConfig.wanChain.nodeUrl;
+const scAddr = config.scAddrs.CrossLendRepay;
+
+const { crossLendRepay_abi } = require('../abi');
+const admin = require('../../../wallet');
+
+const ctokenScAddr = config.lendConfig.w2wanUSDT
+const underlyingTokenScAddr = config.lendConfig.params.w2wanUSDT.underlying.toLowerCase();
+let account1 = "0xEF48C3AB7f184e469504Bdbd9C07883Ab4427c66";
+let account2 = "0xdC484B57a5CC0563b42C2e3D37466b14186f501b"
+const {
+    CrossCheckObj,CrossLendMintObj,CrossLendRepayObj,Type0TxParserObj,Type1TxParserObj,Type2TxParserObj
+} = require('../../../ScObjs')
+const {BigNumber, ethers} = require("ethers");
+let crossLendMinObj = new CrossLendRepayObj(scAddr,wanUrl,crossLendRepay_abi);
+
+
+const lendTokenRepay = async ()=>{
+    let amount = await crossLendMinObj.IERC20Balance(underlyingTokenScAddr);
+    console.log('wanusdt balance: ', amount.toString());
+
+    let repayAmount = ethers.utils.parseUnits('1.8',6);
+    let ret = await crossLendMinObj.lendTokenRepay(admin, ctokenScAddr.toLowerCase(), underlyingTokenScAddr,account2, repayAmount);
+    console.log('ret: ', ret);
+}
+
+
+const main = async ()=>{
+    await lendTokenRepay();
+}
+main();
