@@ -17,15 +17,15 @@ const {
     CrossCheckObj,CrossLendMintObj,CrossLendRepayObj,Type0TxParserObj,Type1TxParserObj,Type2TxParserObj
 } = require('../../../ScObjs')
 const {BigNumber} = require("ethers");
-let crossLendMinObj = new CrossLendRepayObj(scAddr,wanUrl,crossLendRepay_abi);
+let crossLendRepyObj = new CrossLendRepayObj(scAddr,wanUrl,crossLendRepay_abi);
 
 
 const lendWanRepay = async ()=>{
-    let amount = await crossLendMinObj.IERC20Balance(underlyingTokenScAddr);
-    console.log('wanusdt balance: ', amount.toString());
+    let amount = await crossLendRepyObj.getWanBalance();
+    console.log('wan balance: ', amount.toString());
 
 
-    let ret = await crossLendMinObj.lendWanRepay(admin, cWanAddr.toLowerCase(),account2, amount);
+    let ret = await crossLendRepyObj.lendWanRepay(admin, cWanAddr.toLowerCase(),account2, amount);
     console.log('ret: ', ret);
 }
 

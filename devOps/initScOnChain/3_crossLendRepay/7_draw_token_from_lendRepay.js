@@ -37,7 +37,7 @@ const drawUnderlyingToken = async ()=>{
     console.log('ret: ', ret);
 }
 const main = async ()=>{
-    await drawCtoken();
+    //await drawCtoken();
     await drawUnderlyingToken();
 }
 main();
