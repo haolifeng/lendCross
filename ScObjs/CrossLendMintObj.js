@@ -5,10 +5,10 @@ class CrossLendMintObj extends  CrossLendBaseObj{
         super(scAddr, nodeUrl, abi)
     }
 
-    async lendTokenMint(wallet, cToken, from,  amount){
+    async lendTokenMint(wallet, cToken, underlyingToken, from,  amount){
         let singer = wallet.connect(this.provider);
         let signedWallet = this.scInst.connect(singer);
-        let tx = await signedWallet.lendTokenMint(cToken, from,  amount);
+        let tx = await signedWallet.lendTokenMint(cToken,underlyingToken, from,  amount);
         let ret = await tx.wait();
         return ret;
     }

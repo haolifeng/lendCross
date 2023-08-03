@@ -4,6 +4,7 @@ const abi = require("../abi/CWan.json");
 const scAddr = config.lendConfig.wWAN.toLowerCase();
 class CWan{
     constructor() {
+        this.scAddr = scAddr;
         this.provider = new ethers.providers.JsonRpcProvider(config.appConfig.wanChain.nodeUrl);
         this.scInst = new ethers.Contract(scAddr,abi,this.provider);
     }

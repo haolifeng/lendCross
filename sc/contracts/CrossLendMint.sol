@@ -12,7 +12,7 @@ contract CrossLendMint is CrossLendBase {
         uint256 oldBalance = CErc20(cToken).balanceOf(address(this));
 
         uint error = CErc20(cToken).mint(amount);
-        require(error == 0);
+        require(error == 0,"error must be 0");
 
         uint256 newBalance = CErc20(cToken).balanceOf(address(this));
 
