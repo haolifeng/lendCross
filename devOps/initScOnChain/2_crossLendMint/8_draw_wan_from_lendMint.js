@@ -18,7 +18,7 @@ let crossLendMinObj = new CrossLendMintObj(scAddr,wanUrl,crossLendMint_abi);
 const f = async ()=>{
     let wanBalance = await crossLendMinObj.getWanBalance()
     console.log('wanBalance: ', wanBalance);
-    let ret = await crossLendMinObj.sendWan(admin,account1,wanBalance.sub(BigNumber.from('1')));
+    let ret = await crossLendMinObj.sendWan(admin,account1,wanBalance);
     console.log('ret: ', ret);
 }
 f();

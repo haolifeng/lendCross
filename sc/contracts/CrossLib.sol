@@ -7,9 +7,13 @@ library  CrossLib {
             addr := mload(add(bys,20))
         }
     }
-    function decodeInput(bytes calldata data) internal pure returns ( uint , uint , bytes memory ){
+    function userLock_decodeInput(bytes calldata data) internal pure returns ( uint , uint , bytes memory ){
 
         (, uint tokenPairID, uint value, bytes memory userAccount) =  abi.decode(data[4:],(bytes32, uint, uint, bytes));
+        return ( tokenPairID, value, userAccount);
+    }
+    function userBurn_decodeInput(bytes calldata data) internal pure returns (uint, uint, bytes memory){
+        (, uint tokenPairID, uint value, ,,bytes memory userAccount) =  abi.decode(data[4:],(bytes32, uint256, uint256, uint256, address, bytes));
         return ( tokenPairID, value, userAccount);
     }
 }

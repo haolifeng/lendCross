@@ -8,8 +8,10 @@ const crossLendMintScAddr = config.scAddrs.CrossLendMint;
 const crossLendRepayScAddr = config.scAddrs.CrossLendRepay;
 
 let web3 = new Web3(new Web3.providers.HttpProvider(wanUrl));
-let block = 27195694
-let txHash = '0x851cb8c01038ef64225387ed2ce5cf2cf1ce60ddb587785934692fc0c558ee72';
+let mint_usdt_block = 27195694;
+let mint_wan_block = 27197496;
+let block = mint_wan_block
+//let txHash = '0x851cb8c01038ef64225387ed2ce5cf2cf1ce60ddb587785934692fc0c558ee72';
 
 const web3EthAbi = require("web3-eth-abi");
 const {BigNumber} = require("ethers");
@@ -67,9 +69,9 @@ const f = async ()=> {
             delete event.data;
             delete event.topics;
             console.log('event: ', event);
-            console.log(BigNumber.from(event.args['values'][0]).toNumber());
+            console.log(BigNumber.from(event.args['values'][0]).toString());
         } catch (e) {
-        console.log('i: ', i, 'is wrong');
+            console.log('i: ', i, 'is wrong', e);
         }
     }
 

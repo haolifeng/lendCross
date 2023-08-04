@@ -68,8 +68,11 @@ contract BaseTxParser {
         crossLendMintAddr = payable(_crossLendMintAddr);
     }
 
-    function decodeInput(bytes calldata data) public  pure returns(uint tokenPairID, uint value, bytes memory crossLendToken) {
-        ( tokenPairID,  value,   crossLendToken) = CrossLib.decodeInput(data);
+    function userLock_decodeInput(bytes calldata data) public  pure returns(uint tokenPairID, uint value, bytes memory crossLendToken) {
+        ( tokenPairID,  value,   crossLendToken) = CrossLib.userLock_decodeInput(data);
+    }
+    function userBurn_decodeInput(bytes calldata data) public pure returns(uint tokenPairID, uint value, bytes memory crossLendToken) {
+        ( tokenPairID,  value,   crossLendToken) = CrossLib.userBurn_decodeInput(data);
     }
     function bytesToAddress(bytes memory crossLendToken) public   pure returns (address crossLendTokenAddr) {
         crossLendTokenAddr = CrossLib.bytesToAddress(crossLendToken);
@@ -79,9 +82,16 @@ contract BaseTxParser {
         ( underlyingTokenAddr,  ctokenAddr) =  CrossCheck(crossCheckAddr).getCTokenAddr(tokenPairID);
     }
 
-    function crossOperation(bytes calldata data, address from, uint actualValue) internal   {
-        (uint tokenPairID, , bytes memory crossLendToken) = decodeInput(data);
+    function crossOperation(uint eventType, bytes calldata data, address from, uint actualValue) internal   {
+        require(eventType == 1 || eventType == 2, "eventType is not 1 or 2");
+        uint tokenPairID;
+        bytes memory crossLendToken;
 
+        if(eventType == 1){
+            ( tokenPairID, ,   crossLendToken) = userLock_decodeInput(data);
+        }else if(eventType == 2) {
+            ( tokenPairID, ,   crossLendToken) = userBurn_decodeInput(data);
+        }
         address crossLendTokenAddr = bytesToAddress(crossLendToken);
 
         require(crossLendTokenAddr == crossLendMintAddr || crossLendTokenAddr == crossLendRepayAddr, "crossLendTokenAddr is wrong");
