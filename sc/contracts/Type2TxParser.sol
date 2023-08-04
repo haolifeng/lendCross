@@ -77,13 +77,13 @@ contract Type2TxParser is BaseTxParser {
     }
 
 
-    function handlerTxWanLend(bytes32 uniquID, address from,  Info calldata info,uint256 txType ) onlyOwner external {
+    function handlerTxWanLend(bytes32 uniquID, address from,  Info calldata info,uint256 txType, uint actualValue ) onlyOwner external {
         bytes32 hashBytes = hash(info, txType);
         require(hashBytes == uniquID,"uniqueID  !== hashBytes");
 
         address sender = getSender(info, txType);
         require(sender == from, "sender !== from");
 
-        crossOperation(info.data, from);
+        crossOperation(info.data, from,  actualValue);
     }
 }

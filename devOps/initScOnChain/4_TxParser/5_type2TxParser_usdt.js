@@ -35,33 +35,36 @@ const goerilWeb3 = new Web3(new Web3.providers.HttpProvider(goerilUrl));
 const tempConfig = require('./tempConfig');
 
 let tx2TxParser = new Type2TxParserObj(ScAddr,wanUrl, Type2TxParser_abi);
-const toMint = async()=>{
+
+const getTx = async () =>{
     let tx = await goerilWeb3.eth.getTransaction(tempConfig.txHash.toLendMint);
     console.log('tx: ', tx)
+    return tx;
+}
+const toMint = async()=>{
+    let tx = await getTx();
     /*
-    * {
-  blockHash: '0x855cb044a52e89190a5058493baa67ac6dc7d10d016c523724f5bae3eb8d0d0c',
-  blockNumber: 9454636,
-  from: '0xEF48C3AB7f184e469504Bdbd9C07883Ab4427c66',
+{
+  blockHash: '0x89c8b5cde71189b113a0ce1f85bd1adc487b69596fa3dfb6e602a70b45d34862',
+  blockNumber: 9459734,
+  from: '0xdC484B57a5CC0563b42C2e3D37466b14186f501b',
   gas: 145518,
-  gasPrice: '7284',
-  maxFeePerGas: '7284',
-  maxPriorityFeePerGas: '7284',
-  hash: '0x54c94a65b5db142a6690a353b5d10958c3db438daea759fcb00409708e437e92',
-  input: '0x257011b6000000000000000000000000000000000000000000000000006465765f313336000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000f4240000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000145d56ede0df1c28c30f05df200e125424fcc3124b000000000000000000000000',
-  nonce: 9,
+  gasPrice: '7013',
+  maxFeePerGas: '7013',
+  maxPriorityFeePerGas: '7013',
+  hash: '0x0e215917024cbfeab2aeef899d66e256dba663852f7f8b1f0d3410322fa6bb45',
+  input: '0x257011b6000000000000000000000000000000000000000000000000006465765f313336000000000000000000000000000000000000000000000000000000000000000a00000000000000000000000000000000000000000000000000000000000f4240000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000145ad8cb6baa0899fdf9179b80984ca3cac75dc51c000000000000000000000000',
+  nonce: 2,
   to: '0xb8460Eeaa06Bc6668dad9fd42B661C0B96b3bE57',
-  transactionIndex: 74,
+  transactionIndex: 69,
   value: '0',
   type: 2,
   accessList: [],
   chainId: '0x5',
-  v: '0x1',
-  r: '0x8a1838126a7e814e4d0f0d120b4ce4b91e40cf882e8300b33947a0c0cc0f5f66',
-  s: '0x73bdd6251c2ed73e17486baa419570cde70e7ba08afbcf746317dccce69af65e'
+  v: '0x0',
+  r: '0x797a004d5a29993c1abdd8bc52ab1d2db3a722cf65c5147340464b1fa763d284',
+  s: '0x72c66240eccfa3d3b461e819b4cff5d9c7f09a599132a114e1b470904ac5ee0d'
 }
-    *
-    *
     * */
     let accessList = tx.accessList;
     let comAcclessList = [];
@@ -107,18 +110,35 @@ const toMint = async()=>{
         s:td.s
 
     }
-    console.log('info: ', info)
+    //console.log('info: ', info)
 
-    let ret = await tx2TxParser.handlerTxWanLend(admin,tx.hash, tx.from, info, 2);
-    console.log('ret');
-    /*let txtypes = await tx2TxParser.hash(info, 2);
-    console.log('txtypes: ', txtypes);
+    let ret = await tx2TxParser.handlerTxWanLend(admin,tx.hash, tx.from, info, 2, 990000);
+    console.log('ret: ', ret);
+/*
+    let txhash = await tx2TxParser.hash(info, 2);
+    console.log('txhash: ', txhash);
+    console.log('tx.hash:', tx.hash)
 
     let sender = await tx2TxParser.getSender(info, 2);
-    console.log('sender: ', sender);*/
+    console.log('sender: ', sender);
+    console.log('tx.from', tx.from);
+
+    let ret = await tx2TxParser.decodeInput(info.data);
+    console.log('ret: ', ret);
+    console.log(ret[0].toString());
+    console.log(ret[1].toString());
+    console.log(ret[2].toString());
+
+    let ret1 = await tx2TxParser.bytesToAddress(ret[2])
+    console.log('ret1: ', ret1);
+
+    let ret3 = await tx2TxParser.getCTokenAddr(ret[0]);
+    console.log('ret3: ', ret3);*/
+
 }
 
 const main = async ()=>{
+    //await getTx();
     await toMint();
 }
 

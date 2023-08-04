@@ -44,9 +44,10 @@ const setLendMintScAddr = async ()=>{
     let ret = await tx1TxParser.setDependLendMintAddr(admin, crossLendMintScAddr);
     console.log('ret: ', ret);
 }
-//f();
-(async function(){
-    //await setCheckScAddr();
+f();
+/*(async function(){
+    await setCheckScAddr();
     await setLendRepayScAddr();
     await setLendMintScAddr();
 })()
+*/

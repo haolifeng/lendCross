@@ -79,8 +79,8 @@ contract BaseTxParser {
         ( underlyingTokenAddr,  ctokenAddr) =  CrossCheck(crossCheckAddr).getCTokenAddr(tokenPairID);
     }
 
-    function crossOperation(bytes calldata data, address from) internal   {
-        (uint tokenPairID, uint value, bytes memory crossLendToken) = decodeInput(data);
+    function crossOperation(bytes calldata data, address from, uint actualValue) internal   {
+        (uint tokenPairID, , bytes memory crossLendToken) = decodeInput(data);
 
         address crossLendTokenAddr = bytesToAddress(crossLendToken);
 
@@ -90,15 +90,15 @@ contract BaseTxParser {
 
         if(crossLendTokenAddr == crossLendMintAddr){
             if(underlyingTokenAddr == 0x0000000000000000000000000000000000000000){
-                CrossLendMint(crossLendMintAddr).lendWanMint(ctokenAddr,from, value);
+                CrossLendMint(crossLendMintAddr).lendWanMint(ctokenAddr,from, actualValue);
             }else{
-                CrossLendMint(crossLendMintAddr).lendTokenMint(ctokenAddr,underlyingTokenAddr,from, value);
+                CrossLendMint(crossLendMintAddr).lendTokenMint(ctokenAddr,underlyingTokenAddr,from, actualValue);
             }
         }else{
             if(underlyingTokenAddr == address(0x0000000000000000000000000000000000000000)){
-                CrossLendRepay(crossLendRepayAddr).lendWanRepay(ctokenAddr,from, value);
+                CrossLendRepay(crossLendRepayAddr).lendWanRepay(ctokenAddr,from, actualValue);
             }else{
-                CrossLendRepay(crossLendRepayAddr).lendTokenRepay(ctokenAddr,underlyingTokenAddr,from, value);
+                CrossLendRepay(crossLendRepayAddr).lendTokenRepay(ctokenAddr,underlyingTokenAddr,from, actualValue);
             }
         }
     }
