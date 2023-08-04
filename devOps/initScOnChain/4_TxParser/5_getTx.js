@@ -111,6 +111,11 @@ const toMint = async()=>{
 
     let ret = await tx2TxParser.handlerTxWanLend(admin,tx.hash, tx.from, info, 2);
     console.log('ret');
+    /*let txtypes = await tx2TxParser.hash(info, 2);
+    console.log('txtypes: ', txtypes);
+
+    let sender = await tx2TxParser.getSender(info, 2);
+    console.log('sender: ', sender);*/
 }
 
 const main = async ()=>{

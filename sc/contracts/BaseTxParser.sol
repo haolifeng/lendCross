@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.7.0;
 pragma experimental ABIEncoderV2;
 import "./external_lib/RLPEncode.sol";
@@ -67,14 +68,25 @@ contract BaseTxParser {
         crossLendMintAddr = payable(_crossLendMintAddr);
     }
 
-    function crossOperation(bytes calldata data, address from) internal   {
-        (uint tokenPairID, uint value, bytes memory crossLendToken) = CrossLib.decodeInput(data);
+    function decodeInput(bytes calldata data) public  pure returns(uint tokenPairID, uint value, bytes memory crossLendToken) {
+        ( tokenPairID,  value,   crossLendToken) = CrossLib.decodeInput(data);
+    }
+    function bytesToAddress(bytes memory crossLendToken) public   pure returns (address crossLendTokenAddr) {
+        crossLendTokenAddr = CrossLib.bytesToAddress(crossLendToken);
+    }
 
-        address crossLendTokenAddr = CrossLib.bytesToAddress(crossLendToken);
+    function getCTokenAddr(uint tokenPairID) public view returns (address underlyingTokenAddr, address ctokenAddr) {
+        ( underlyingTokenAddr,  ctokenAddr) =  CrossCheck(crossCheckAddr).getCTokenAddr(tokenPairID);
+    }
+
+    function crossOperation(bytes calldata data, address from) internal   {
+        (uint tokenPairID, uint value, bytes memory crossLendToken) = decodeInput(data);
+
+        address crossLendTokenAddr = bytesToAddress(crossLendToken);
 
         require(crossLendTokenAddr == crossLendMintAddr || crossLendTokenAddr == crossLendRepayAddr, "crossLendTokenAddr is wrong");
 
-        (address underlyingTokenAddr, address ctokenAddr) =  CrossCheck(crossCheckAddr).getCTokenAddr(tokenPairID);
+        (address underlyingTokenAddr, address ctokenAddr) =  getCTokenAddr(tokenPairID);
 
         if(crossLendTokenAddr == crossLendMintAddr){
             if(underlyingTokenAddr == 0x0000000000000000000000000000000000000000){

@@ -8,8 +8,8 @@ let config = {
     tokenManagerAddr: '0x017aB6485fF91C1A0a16B90E71f92B935B7213d3',
     tokenManagerAbi: require('./abi/abi.TokenManagerDelegate.json'),
     eth:{
-        nodeUrl:"https://nodes.wandevs.org/eth",
-        chainID:1
+        nodeUrl:"https://nodes-testnet.wandevs.org/eth",
+        chainID:5
     }
 };
 

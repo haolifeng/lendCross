@@ -3,6 +3,7 @@
 * @author Hamdi Allam hamdi.allam97@gmail.com
 * Please reach out with any questions or concerns
 */
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.7.0;
 
 library RLPDecode {
