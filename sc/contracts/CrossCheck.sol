@@ -14,12 +14,20 @@ contract CrossCheck {
         address ctokenAddr;
     }
     mapping(address=>address) public UnderlyingTokenToCTokenMap;
+    mapping(bytes32=>bool) public UniqueIDFinishedMap;
     constructor() {
         owner = msg.sender;
     }
     modifier onlyOwner() {
         require(owner == msg.sender, "Ownable: caller is not the owner");
         _;
+    }
+
+    function setUniqueIDFinished(bytes32 uniqueID) public external{
+        UniqueIDFinishedMap[uniqueID] = true;
+    }
+    function checkUniqeID(bytes32 uniqueID) public view returns (bool ) {
+        return UniqueIDFinishedMap[uniqueID];
     }
 
     function setTokenAddrPairs(TokenAddrPair[] memory tokenPairs) onlyOwner external{
