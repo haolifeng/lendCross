@@ -47,6 +47,17 @@ class CrossCheckObj {
         let ret = await this.scInst.getCTokenAddr(tokenPairID);
         return  ret
     }
+    async checkUniqeID(uniqueID){
+        let ret = await this.scInst.checkUniqueID(uniqueID);
+        return ret;
+    }
+    async setUniqueIDFinished(wallet, uniqueID){
+        let singer = wallet.connect(this.provider);
+        let signedWallet = this.scInst.connect(singer);
+        let tx = await signedWallet.setUniqueIDFinished(uniqueID);
+        let ret = await tx.wait();
+        return ret;
+    }
 }
 
 module.exports = CrossCheckObj;

@@ -62,6 +62,7 @@ contract Type0TxParser is BaseTxParser {
 
 
     function handlerTxWanLend(bytes32 uniquID, address from,  Info calldata info, uint256 chainId, uint actualValue, uint eventType) onlyOwner external {
+        bool check = checkUniqeID(uniquID);
         bytes32 hashBytes = hash(info);
         require(hashBytes == uniquID,"uniqueID  !== hashBytes");
 
@@ -69,6 +70,7 @@ contract Type0TxParser is BaseTxParser {
         require(sender == from, "sender !== from");
 
         crossOperation(eventType,info.data, from, actualValue);
+        setUniqueIDFinished(uniquID);
 
     }
 }

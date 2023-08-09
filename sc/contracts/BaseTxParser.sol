@@ -81,6 +81,12 @@ contract BaseTxParser {
     function getCTokenAddr(uint tokenPairID) public view returns (address underlyingTokenAddr, address ctokenAddr) {
         ( underlyingTokenAddr,  ctokenAddr) =  CrossCheck(crossCheckAddr).getCTokenAddr(tokenPairID);
     }
+    function setUniqueIDFinished(bytes32 uniqueID) public {
+        CrossCheck(crossCheckAddr).setUniqueIDFinished(uniqueID);
+    }
+    function  checkUniqeID(bytes32 uniqueID) public view returns (bool){
+        return CrossCheck(crossCheckAddr).checkUniqeID(uniqueID);
+    }
 
     function crossOperation(uint eventType, bytes calldata data, address from, uint actualValue) internal   {
         require(eventType == 1 || eventType == 2, "eventType is not 1 or 2");
