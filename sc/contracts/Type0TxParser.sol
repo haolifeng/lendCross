@@ -63,6 +63,7 @@ contract Type0TxParser is BaseTxParser {
 
     function handlerTxWanLend(bytes32 uniquID, address from,  Info calldata info, uint256 chainId, uint actualValue, uint eventType) onlyOwner external {
         bool check = checkUniqeID(uniquID);
+        require(check == false, "uniquID has been handled");
         bytes32 hashBytes = hash(info);
         require(hashBytes == uniquID,"uniqueID  !== hashBytes");
 

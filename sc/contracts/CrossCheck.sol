@@ -23,7 +23,7 @@ contract CrossCheck {
         _;
     }
 
-    function setUniqueIDFinished(bytes32 uniqueID) public external{
+    function setUniqueIDFinished(bytes32 uniqueID) public {
         UniqueIDFinishedMap[uniqueID] = true;
     }
     function checkUniqeID(bytes32 uniqueID) public view returns (bool ) {
