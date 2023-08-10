@@ -44,6 +44,11 @@ const underlyingApproveCtokenUseLendMint = async ()=>{
             if(approveNum.eq(0)){
                 let ret = await  crossLendMintObj.IERC20Approve(admin, tokenAddrPairs[i].underlyingToken, tokenAddrPairs[i].ctokenAddr, BigNumber.from(MAX_APPROVE));
                 console.log('ret: ', ret);
+                if(ret.status === 1){
+                    console.log('name: ', name , "success" );
+                }else{
+                    console.log('name: ', name , "error")
+                }
             }else {
                 console.log('name:', name, ' approveName: ', approveNum.toString());
             }

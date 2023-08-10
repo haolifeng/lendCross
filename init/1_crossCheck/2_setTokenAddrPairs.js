@@ -1,6 +1,6 @@
 const config = require('../config');
 
-const admin = require('../../../wallet');
+const admin = require('../../wallet');
 
 const crossCheckObj = require('./crossCheckObj');
 
@@ -25,7 +25,7 @@ const setTokenAddrsPairs = async ()=>{
 
     let ret = await crossCheckObj.setTokenAddrPairs(admin, tokenAddrPairs);
     console.log('ret: ', ret);
-
+    return ret.status === 1;
 
 }
 

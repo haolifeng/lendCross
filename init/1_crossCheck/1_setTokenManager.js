@@ -9,11 +9,11 @@ const setTokenManager = async ()=>{
 
     let ret = await crossCheckObj.setTokenManager(admin, tokenManagerScAddr);
     console.log('ret: ', ret);
-    return ret;
+    return ret.status === 1;
 
 };
 
 
 //setTokenManager();
 
-module.exports = setTokenManager();
+module.exports = setTokenManager;

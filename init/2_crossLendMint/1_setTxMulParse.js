@@ -18,6 +18,7 @@ const setTxMulParse = async ()=>{
 
     let ret = await crossLendMintObj.setTxMulParse(admin,txParsers);
     console.log('ret: ', ret)
+    return ret.status === 1;
 }
 //setTxMulParse()
 

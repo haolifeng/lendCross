@@ -15,7 +15,7 @@ const MAX_APPROVE = '11579208923731619542357098500868790785326998466564056403945
 
 const crossLendRepayObj = require('./crossLendRepay');
 
-const main = async ()=>{
+const underlyingApproveCtokenUseLendRepay = async ()=>{
     let lendConfig = config.lendConfig;
     let params = lendConfig.params;
     let tokenAddrPairs = [];
@@ -45,6 +45,12 @@ const main = async ()=>{
             if(approveNum.eq(0)){
                 let ret = await  crossLendRepayObj.IERC20Approve(admin, tokenAddrPairs[i].underlyingToken, tokenAddrPairs[i].ctokenAddr, BigNumber.from(MAX_APPROVE));
                 console.log('ret: ', ret);
+                console.log('ret: ', ret);
+                if(ret.status === 1){
+                    console.log('name: ', name , "success" );
+                }else{
+                    console.log('name: ', name , "error")
+                }
 
             }else {
                 console.log('name:', name, ' approveName: ', approveNum.toString());
@@ -54,4 +60,5 @@ const main = async ()=>{
     }
 
 }
-main();
+
+module.exports = underlyingApproveCtokenUseLendRepay;
