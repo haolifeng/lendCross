@@ -48,7 +48,7 @@ class CrossCheckObj {
         return  ret
     }
     async checkUniqeID(uniqueID){
-        let ret = await this.scInst.checkUniqueID(uniqueID);
+        let ret = await this.scInst.checkUniqeID(uniqueID);
         return ret;
     }
     async setUniqueIDFinished(wallet, uniqueID){
