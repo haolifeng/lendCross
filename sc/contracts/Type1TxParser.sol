@@ -84,6 +84,10 @@ contract Type1TxParser is BaseTxParser {
         address sender = getSender(info,txType);
         require(sender == from, "sender !== from");
 
+        //checkout info.to is fromchain  crossDelegate scAddr
+        bool ret = checkCrossDelegateSc(info.to);
+        require(ret == true, "to address must be in crossDelegate Sc Addrsss");
+
         crossOperation(eventType,info.data, from, actualValue);
         setUniqueIDFinished(uniquID);
 

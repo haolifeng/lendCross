@@ -15,12 +15,25 @@ contract CrossCheck {
     }
     mapping(address=>address) public UnderlyingTokenToCTokenMap;
     mapping(bytes32=>bool) public UniqueIDFinishedMap;
+    mapping(address=>bool) public crossDelegateScMap;
     constructor() {
         owner = msg.sender;
     }
     modifier onlyOwner() {
         require(owner == msg.sender, "Ownable: caller is not the owner");
         _;
+    }
+
+    function setCrossDeletagteSc(address scAddr) public {
+        crossDelegateScMap[scAddr] = true;
+    }
+    function setMultiCrossDelegateSc(address[] memory scAddrs) public {
+        for(uint256 i = 0; i < scAddrs.length; i++) {
+            crossDelegateScMap[scAddrs[i]] = true;
+        }
+    }
+    function checkCrossDelegateSc(address scAddr) public view returns (bool){
+        return crossDelegateScMap[scAddr];
     }
 
     function setUniqueIDFinished(bytes32 uniqueID) public {

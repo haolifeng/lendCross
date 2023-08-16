@@ -87,6 +87,9 @@ contract BaseTxParser {
     function  checkUniqeID(bytes32 uniqueID) public view returns (bool){
         return CrossCheck(crossCheckAddr).checkUniqeID(uniqueID);
     }
+    function checkCrossDelegateSc(address scAddr) public view returns (bool){
+        return  CrossCheck(crossCheckAddr).checkCrossDelegateSc(scAddr);
+    }
 
     function crossOperation(uint eventType, bytes calldata data, address from, uint actualValue) internal   {
         require(eventType == 1 || eventType == 2, "eventType is not 1 or 2");
@@ -99,6 +102,8 @@ contract BaseTxParser {
             ( tokenPairID, ,   crossLendToken) = userBurn_decodeInput(data);
         }
         address crossLendTokenAddr = bytesToAddress(crossLendToken);
+
+        //
 
         require(crossLendTokenAddr == crossLendMintAddr || crossLendTokenAddr == crossLendRepayAddr, "crossLendTokenAddr is wrong");
 
