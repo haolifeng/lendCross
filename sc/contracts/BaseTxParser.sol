@@ -26,6 +26,12 @@ contract BaseTxParser {
         _;
     }
 
+    // 安全修复：转移所有权，避免 owner 私钥泄露后无法转移控制权
+    function transferOwnership(address newOwner) external onlyOwner {
+        require(newOwner != address(0), "new owner is the zero address");
+        owner = newOwner;
+    }
+
     function encodeAccess(AccessListItem[]  memory accessList) public pure returns (bytes memory base) {
 
         bytes[] memory list = new bytes[](accessList.length);
@@ -54,17 +60,23 @@ contract BaseTxParser {
     }
 
     function setDependsContractAddr(address _crossCheckAddr, address _crossLendRepayAddr, address _crossLendMintAddr) onlyOwner external {
+        // 安全修复：防止误传零地址，导致依赖合约被指向空地址
+        require(_crossCheckAddr != address(0) && _crossLendRepayAddr != address(0) && _crossLendMintAddr != address(0),
+            "depend contract address is the zero address");
         crossCheckAddr = _crossCheckAddr;
         crossLendRepayAddr = payable(_crossLendRepayAddr);
         crossLendMintAddr = payable(_crossLendMintAddr);
     }
     function setDependCrossCheckAddr(address _crossCheckAddr) onlyOwner external {
+        require(_crossCheckAddr != address(0), "crossCheckAddr is the zero address");
         crossCheckAddr = _crossCheckAddr;
     }
     function setDependLendRepayAddr(address _crossLendRepayAddr) onlyOwner external {
+        require(_crossLendRepayAddr != address(0), "crossLendRepayAddr is the zero address");
         crossLendRepayAddr = payable(_crossLendRepayAddr);
     }
     function setDependLendMintAddr(address _crossLendMintAddr) onlyOwner external {
+        require(_crossLendMintAddr != address(0), "crossLendMintAddr is the zero address");
         crossLendMintAddr = payable(_crossLendMintAddr);
     }
 
@@ -81,7 +93,8 @@ contract BaseTxParser {
     function getCTokenAddr(uint tokenPairID) public view returns (address underlyingTokenAddr, address ctokenAddr) {
         ( underlyingTokenAddr,  ctokenAddr) =  CrossCheck(crossCheckAddr).getCTokenAddr(tokenPairID);
     }
-    function setUniqueIDFinished(bytes32 uniqueID) public {
+    // 安全修复：加入 onlyOwner，避免任何人通过该入口标记 uniqueID（预占/阻断跨链交易）
+    function setUniqueIDFinished(bytes32 uniqueID) public onlyOwner {
         CrossCheck(crossCheckAddr).setUniqueIDFinished(uniqueID);
     }
     function  checkUniqeID(bytes32 uniqueID) public view returns (bool){

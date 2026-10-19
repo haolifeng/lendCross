@@ -7,6 +7,7 @@ const run = async ()=>{
     await check_crossCheck.checkTokenAddrPairs();
     await check_crossCheck.checkTokenManagerAddr();
     await check_crossCheck.checkWanChainID();
+    await check_crossCheck.checkParsers();
 
     await check_crossLendMintObj.checkTxParse();
     await check_crossLendMintObj.checkUnderlyingToken_approve_ctoken_lendMint();

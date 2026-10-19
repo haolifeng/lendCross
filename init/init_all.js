@@ -22,21 +22,24 @@ const run = async ()=>{
         console.log('2 --- crossCheck.setTokenAddrPairs -------------------------------------------');
         await crossCheck.setTokenAddrPairs();
 
-        console.log('3 --- crossLendMint.setTxMulParse -------------------------------------------');
+        console.log('3 --- crossCheck.setParsers -------------------------------------------');
+        await crossCheck.setParsers();
+
+        console.log('4 --- crossLendMint.setTxMulParse -------------------------------------------');
         await crossLendMint.setTxMulParse();
-        console.log('4 --- crossLendMint.underlyingApproveCtokenUseLendMint -------------------------------------------');
+        console.log('5 --- crossLendMint.underlyingApproveCtokenUseLendMint -------------------------------------------');
         await crossLendMint.underlyingApproveCtokenUseLendMint();
 
-        console.log('5 --- crossLendRepay.setTxMulParse -------------------------------------------');
+        console.log('6 --- crossLendRepay.setTxMulParse -------------------------------------------');
         await crossLendRepay.setTxMulParse();
 
-        console.log('6 --- crossLendRepay.underlyingApproveCtokenUseLendRepay -------------------------------------------');
+        console.log('7 --- crossLendRepay.underlyingApproveCtokenUseLendRepay -------------------------------------------');
         await crossLendRepay.underlyingApproveCtokenUseLendRepay();
-        console.log('7 --- type0setDependsContractAddr -------------------------------------------');
+        console.log('8 --- type0setDependsContractAddr -------------------------------------------');
         await type0setDependsContractAddr();
-        console.log('8 --- type1setDependsContractAddr -------------------------------------------');
+        console.log('9 --- type1setDependsContractAddr -------------------------------------------');
         await type1setDependsContractAddr();
-        console.log('9 --- type2setDependsContractAddr -------------------------------------------');
+        console.log('10 --- type2setDependsContractAddr -------------------------------------------');
         await type2setDependsContractAddr();
     }catch (e){
         console.log('e: ', e)

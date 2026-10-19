@@ -58,6 +58,30 @@ class CrossCheckObj {
         let ret = await tx.wait();
         return ret;
     }
+
+    // 授权/撤销某个地址（通常是 TxParser 合约）标记 uniqueID 已处理
+    async setParser(wallet, parser, allowed){
+        let singer = wallet.connect(this.provider);
+        let signedWallet = this.scInst.connect(singer);
+        let tx = await signedWallet.setParser(parser, allowed);
+        let ret = await tx.wait();
+        return ret;
+    }
+    async checkParser(parser){
+        return await this.scInst.parserMap(parser);
+    }
+
+    // 撤销跨链代理合约白名单，用于应急处置
+    async delCrossDelegateSc(wallet, scAddr){
+        let singer = wallet.connect(this.provider);
+        let signedWallet = this.scInst.connect(singer);
+        let tx = await signedWallet.delCrossDelegateSc(scAddr);
+        let ret = await tx.wait();
+        return ret;
+    }
+    async checkCrossDelegateSc(scAddr){
+        return await this.scInst.checkCrossDelegateSc(scAddr);
+    }
 }
 
 module.exports = CrossCheckObj;

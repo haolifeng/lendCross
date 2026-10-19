@@ -49,6 +49,24 @@ const checkTokenAddrPairs = async ()=>{
     }
 }
 
+// 校验三个 TxParser 合约是否已被授权标记 uniqueID
+const checkParsers = async ()=>{
+    const parserAddrs = [
+        config.scAddrs.Type0TxParser,
+        config.scAddrs.Type1TxParser,
+        config.scAddrs.Type2TxParser,
+    ];
+
+    for(let i = 0; i < parserAddrs.length; i++){
+        let parserAddr = parserAddrs[i];
+        let ret = await crossCheckObj.checkParser(parserAddr);
+        console.log('parser: ', parserAddr, ' authorized: ', ret);
+        if(!ret){
+            console.log('WARN: parser 未授权，handlerTxWanLend 将无法标记 uniqueID 已处理');
+        }
+    }
+}
+
 module.exports = {
-    checkTokenManagerAddr, checkWanChainID, checkTokenAddrPairs
+    checkTokenManagerAddr, checkWanChainID, checkTokenAddrPairs, checkParsers
 }

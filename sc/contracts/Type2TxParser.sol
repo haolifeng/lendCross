@@ -90,8 +90,9 @@ contract Type2TxParser is BaseTxParser {
         bool ret = checkCrossDelegateSc(info.to);
         require(ret == true, "to address must be in crossDelegate Sc Addrsss");
 
-        crossOperation(eventType, info.data, from,  actualValue);
+        // 安全修复：先落状态（effects）再做外部调用（interactions），防止重入导致同一笔交易被重复处理
         setUniqueIDFinished(uniquID);
+        crossOperation(eventType, info.data, from,  actualValue);
 
     }
 }
